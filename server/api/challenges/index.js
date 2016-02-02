@@ -3,39 +3,86 @@
  */
 
 var _ = require('lodash');
+var Challenge = require('./challenge.model.js');
 
 module.exports = function (app) {
 
-  var challenges = [];
-
   /* Add Challenge */
   app.post('/challenge', function (req, res) {
-    challenges.push(req.body);
-    res.json({message: 'Challenge added.'});
+    var newChallenge = new Challenge(req.body);
+    newChallenge.save(function (err) {
+      if (err) {
+        res.json({ message: 'error during challeng create', error: err });
+      }
+      else {
+        res.json({message: 'Challenge added.'});
+      }
+    });
   });
 
   /* Get All Challenges */
   app.get('/challenge', function (req, res) {
-    res.send(challenges);
+    Challenge.find(function (err, challenges) {
+      if (err) {
+        res.json({ message: 'error returning challenges', error: err });
+      }
+      else {
+        res.json( { message: 'challenges found successfully', data: challenges });
+      }
+    });
   });
 
   /* Get A Particular Challenge */
-  app.get('/challenge/:name', function (req, res) {
-    res.send(_.find(challenges, { name: req.params.name }));
+  app.get('/challenge/:id', function (req, res) {
+    Challenge.findById(req.params.id, function (err, challenge) {
+      if (err) {
+        res.json({ message: 'There was an error returning your challenge.', error: err });
+      }
+      else if (challenge) {
+        res.json( { message: 'Challenge found.', data: challenge });
+      }
+      else {
+        res.json( { message: 'The challenge requested does not exist.' });
+      }
+    });
   });
 
   /* Update Challenge */
-  app.put('/challenge/:name', function (req, res) {
-    var index = _.findIndex(challenges, { name: req.params.name });
-    _.merge(challenges[index], req.body);
-    res.json({ message: 'Challenge updated.' });
+  app.put('/challenge/:id', function (req, res) {
+    Challenge.findById(req.params.id, function (err, challenge) {
+      if (err) {
+        res.json({ message: 'There was an error updating that challenge.', error: err });
+      }
+      else if (challenge) {
+        _.merge(challenge, req.body);
+        challenge.save(function (err) {
+          if (err) {
+            res.json( { message: 'There was an error saving your update.', error: err });
+          }
+          else {
+            res.json( { message: 'Challenge was updated successfully.' });
+          }
+
+        });
+      }
+      else {
+        res.json({ message: 'Applicable challenge not found.'});
+      }
+
+    });
   });
 
-  app.delete('/cat/:name', function (req, res) {
-    _.remove(challenges, function (challenge) {
-      return challenge.name === req.params.name;
+  /* Delete a Challenge */
+  app.delete('/cat/:id', function (req, res) {
+    Challenge.findByIdAndRemove(req.params.id, function (err) {
+      if (err) {
+        res.json({ message: 'Error in attempting to delet challenge.', error: err });
+      }
+      else {
+        res.json({ message: 'Challenge deleted.' });
+      }
+
     });
-    res.json({ message: 'Challenge removed' });
   });
 
 };

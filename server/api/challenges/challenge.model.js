@@ -6,11 +6,11 @@ var mongoose = require('mongoose');
 
 var challengeSchema = mongoose.Schema({
 
-  id: _id,
+  answerString: String,
+  difficulty: Number,
   language: String,
   name: String,
-  difficulty: Number,
-  answerString: String
+  tests: Array
 
 });
 

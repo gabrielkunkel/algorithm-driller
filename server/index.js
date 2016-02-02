@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 /* Set-Up  */
-mongoose.connect('mongod://localhost/algorithmdriller');
+mongoose.connect('mongodb://localhost/algorithmdriller');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
