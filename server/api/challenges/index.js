@@ -20,20 +20,20 @@ module.exports = function (app) {
   });
 
   /* Get A Particular Challenge */
-  app.get('/challenge/:id', function (req, res) {
-    res.send(_.find(challenges, { id: req.params.id }));
+  app.get('/challenge/:name', function (req, res) {
+    res.send(_.find(challenges, { name: req.params.name }));
   });
 
   /* Update Challenge */
-  app.put('/challenge/:id', function (req, res) {
-    var index = _.findIndex(challenges, { id: req.params.id });
+  app.put('/challenge/:name', function (req, res) {
+    var index = _.findIndex(challenges, { name: req.params.name });
     _.merge(challenges[index], req.body);
     res.json({ message: 'Challenge updated.' });
   });
 
-  app.delete('/cat/:id', function (req, res) {
+  app.delete('/cat/:name', function (req, res) {
     _.remove(challenges, function (challenge) {
-      return challenge.id === req.params.id;
+      return challenge.name === req.params.name;
     });
     res.json({ message: 'Challenge removed' });
   });
