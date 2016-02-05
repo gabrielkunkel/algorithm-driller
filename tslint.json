@@ -30,7 +30,7 @@
     ],
     "member-access": true,
     "member-ordering": [
-      true,
+      false,
       "public-before-private",
       "static-before-instance",
       "variables-before-functions"
@@ -119,7 +119,7 @@
       "check-module"
     ],
     "variable-name": [
-      true,
+      false,
       "check-format",
       "allow-leading-underscore",
       "ban-keywords"

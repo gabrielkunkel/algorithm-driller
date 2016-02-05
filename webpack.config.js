@@ -96,17 +96,17 @@ function getDevConfig() {
 function getJavaScriptLoaders() {
   if (context.indexOf('test') === -1 && process.env.COVERAGE !== 'true') {
     return [
-     // {
-     //   test: /\.js$/,
-     //   loaders: ['eslint?fix'],
-     //   exclude: exclude
-     // }
+      {
+        test: /\.js$/,
+        loaders: ['ng-annotate', 'eslint?fix'],
+        exclude: exclude
+    }
     ];
   } else {
     return [
       {
         test: /\.(test|mock|spec)\.js$/, // include only mock and test files
-        loaders: ['eslint?fix'],
+        loaders: ['ng-annotate', 'eslint?fix'],
         exclude: exclude
       },
       {

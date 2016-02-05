@@ -24,15 +24,19 @@ namespace app {
     require("../node_modules/angular-resource");
     require("../node_modules/angular-ui-codemirror");
     require("../node_modules/angular-sanitize");
+    require("../node_modules/angular-mocks");
 
     //////////// Initialize Angular //////////////////////////////
     angular.module("app", [
         "ui.codemirror",
         "ngResource",
-        "ngSanitize"
+        "ngSanitize",
+        "ngMockE2E"
     ]);
 
-    //////////// Require Application Components //////////////////
-    require("./components/durian.js");
-    require("./components/testbox.js");
+    //////////// Require Application  /////////////////////////////
+    require("./domain/");
+    require("./development");
+    require("./services");
+    require("./components");
 }
