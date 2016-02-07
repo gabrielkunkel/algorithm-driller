@@ -4,7 +4,7 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app.development {
+
   "use strict";
 
     mockRun.$inject = ["$httpBackend"];
@@ -20,10 +20,4 @@ module app.development {
     mockResource.run(mockRun);
 
 
-
-
-
-
-
-}
 

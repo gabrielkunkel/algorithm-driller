@@ -12,7 +12,7 @@ module.exports = function (app) {
     var newChallenge = new Challenge(req.body);
     newChallenge.save(function (err) {
       if (err) {
-        res.json({ message: 'error during challeng create', error: err });
+        res.json({ message: 'error during challenge create', error: err });
       }
       else {
         res.json({message: 'Challenge added.'});

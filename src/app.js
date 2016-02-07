@@ -6,11 +6,6 @@
 var app;
 (function (app) {
     "use strict";
-    //////////// Conditional Requires for Development /////////////
-    /* istanbul ignore if: only necessary for development environment */
-    if (process.env.NODE_ENV === "development") {
-        require("../src/index.html");
-    }
     //////////// Require CSS /////////////////////////////////////
     require("../node_modules/codemirror/lib/codemirror.css");
     require("./main.css");
@@ -19,7 +14,12 @@ var app;
     require("../node_modules/angular-resource");
     require("../node_modules/angular-ui-codemirror");
     require("../node_modules/angular-sanitize");
-    require("../node_modules/angular-mocks");
+    //////////// Conditional Requires for Development /////////////
+    /* istanbul ignore if: only necessary for development environment */
+    if (process.env.NODE_ENV === "development") {
+        require("../src/index.html");
+        require("../node_modules/angular-mocks");
+    }
     //////////// Initialize Angular //////////////////////////////
     angular.module("app", [
         "ui.codemirror",

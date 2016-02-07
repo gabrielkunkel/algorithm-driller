@@ -4,68 +4,21 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app.service {
+(function (): void {
     "use strict";
 
-    export interface IChallenge extends ng.resource.IResource<IChallenge> {
+    interface IChallengeResourceService { }
 
-    }
-
-    export interface IChallengeResource extends ng.resource.IResource<app.domain.IChallenge> {
-        query: any;
-    }
-
-    export class Resource {
-        public static $inject: string[] = ["$resource"];
-
-        public static ChallengeResource($resource: ng.resource.IResourceService): any {
-            var url: string = "http://localhost/api/";
-
-            var resource: any = $resource("", {}, {
-                "query": { method: "GET", url: url },
-                "get": { method: "GET", params: { id: "@id" }, url: url + "(:id)" },
-                "save": { method: "POST", url: url },
-                "remove": { method: "DELET", params: { id: "@id" }, url: url + "(:id" },
-            });
-
-            return <IChallengeResource>resource;
-
-        }
-
+    challengeResource.$inject = ["$resource"];
+    function challengeResource($resource: ng.resource.IResourceService): IChallengeResourceService {
+        return $resource("api/challenge/", {},
+            {
+                "update": { method: "PUT"},
+            }
+        );
     }
 
     angular
-    .module("app")
-    .factory("challengeResource", app.service.Resource.ChallengeResource);
-
-}
-
-/*
-
- module app.common {
- interface IDataAccessService {
- getProductResource(): ng.resource.IResourceClass<IProductResource>;
- }
-
- interface IProductResource extends ng.resource.IResource<app.domain.IProduct> {
-
- }
-
- export class DataAccessService implements IDataAccessService {
-
- static $inject = ["$resource"];
- constructor(private $resource: ng.resource.IResourceService) {
-
- }
- getProductResource(): ng.resource.IResourceClass<IProductResource> {
- return this.$resource("/api/products/:productId");
- }
- }
-
- angular
- .module("common.services")
- .service("dataAccessService", DataAccessService);
-
- }
-
-*/
+        .module("app")
+        .factory("challengeResource", challengeResource);
+})();
