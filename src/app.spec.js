@@ -7,4 +7,5 @@ require("./app.js");
 require("angular-mocks");
 //////////// Require Test Suites //////////////////
 require("./services/challengeResource.service.spec.js");
+// problem: the last stick
 //# sourceMappingURL=app.spec.js.map

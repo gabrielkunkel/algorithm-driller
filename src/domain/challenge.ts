@@ -4,7 +4,7 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app.domain {
+module app {
   "use strict";
 
     export enum languages {
@@ -15,7 +15,7 @@ module app.domain {
 
     export interface ITest {
         description: string;
-        test: (done?: any) => void;
+        test: string;
     }
 
     export interface IChallenge {

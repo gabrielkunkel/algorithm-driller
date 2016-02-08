@@ -24,19 +24,18 @@ namespace app {
     if (process.env.NODE_ENV === "development") {
         require("../src/index.html");
         require("../node_modules/angular-mocks");
+        require("./development");
     }
 
     //////////// Initialize Angular //////////////////////////////
     angular.module("app", [
         "ui.codemirror",
         "ngResource",
-        "ngSanitize",
-        "ngMockE2E"
+        "ngSanitize"
     ]);
 
     //////////// Require Application  /////////////////////////////
     require("./domain/");
-    require("./development");
     require("./services");
     require("./components");
 }

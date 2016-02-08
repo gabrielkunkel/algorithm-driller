@@ -68,7 +68,7 @@
     "consistent-return": 0,     // require return statements to either always or never specify values
     "curly": 2,                 // specify curly brace conventions for all control statements
     "default-case": 2,          // require default case in switch statements (off by default)
-    "dot-notation": 2,          // encourages use of dot notation whenever possible
+    "dot-notation": 0,          // encourages use of dot notation whenever possible
     "eqeqeq": 2,                // [FIXABLE] require the use of === and !==
     "guard-for-in": 0,          // make sure for-in loops have an if statement (off by default)
     "no-alert": 0,              //the use of alert, confirm, and prompt
@@ -104,7 +104,7 @@
     "no-sequences": 2,          //use of comma operator
     "no-unused-expressions": 0, //usage of expressions in statement position
     "no-void": 0,               //use of void operator (off by default)
-    "no-warning-comments": 0,   //usage of configurable warning terms in comments, e.g. TODO or FIXME (off by default)
+    "no-warning-comments": 0,   //usage of configurable warning terms in comments, e.g.
     "no-with": 0,               //use of the with statement
     "radix": 0,                 // require use of the second argument for parseInt() (off by default)
     "vars-on-top": 0,           // requires to declare all vars on top of their containing scope (off by default)
@@ -189,7 +189,7 @@
     ////////// Legacy //////////
 
     "max-depth": [2, 4],       // specify the maximum depth that blocks can be nested (off by default)
-    "max-len": [2, 120, 2],         // specify the maximum length of a line in your program (off by default)
+    //"max-len": [0, 150, 2],         // specify the maximum length of a line in your program (off by default)
     "max-params": 0,      // limits the number of parameters that can be used in the function declaration. (off by default)
     "max-statements": [2, 30],  // specify the maximum number of statement allowed in a function (off by default)
     "no-bitwise": 0,      //use of bitwise operators (off by default)

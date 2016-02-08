@@ -3,14 +3,14 @@
  */
 /// <reference path="../../typings/tsd.d.ts" />
 (function () {
-    "use strict";
-    challengeResource.$inject = ["$resource"];
-    function challengeResource($resource) {
-        return $resource("api/challenge/", {}, {
-            "update": { method: "PUT" }
-        });
-    }
-    angular
+  "use strict";
+  challengeResource.$inject = ["$resource"];
+  function challengeResource($resource) {
+    return $resource("api/challenge/", {}, {
+      "update": { method: "PUT" }
+    });
+  }
+  angular
         .module("app")
         .factory("challengeResource", challengeResource);
 })();

@@ -5,32 +5,31 @@
 /// <reference path="../typings/tsd.d.ts" />
 var app;
 (function (app) {
-    "use strict";
+  "use strict";
     //////////// Require CSS /////////////////////////////////////
-    require("../node_modules/codemirror/lib/codemirror.css");
-    require("./main.css");
+  require("../node_modules/codemirror/lib/codemirror.css");
+  require("./main.css");
     //////////// Require Libraries ///////////////////////////////
-    var angular = require("angular");
-    require("../node_modules/angular-resource");
-    require("../node_modules/angular-ui-codemirror");
-    require("../node_modules/angular-sanitize");
+  var angular = require("angular");
+  require("../node_modules/angular-resource");
+  require("../node_modules/angular-ui-codemirror");
+  require("../node_modules/angular-sanitize");
     //////////// Conditional Requires for Development /////////////
     /* istanbul ignore if: only necessary for development environment */
-    if (process.env.NODE_ENV === "development") {
-        require("../src/index.html");
-        require("../node_modules/angular-mocks");
-    }
-    //////////// Initialize Angular //////////////////////////////
-    angular.module("app", [
-        "ui.codemirror",
-        "ngResource",
-        "ngSanitize",
-        "ngMockE2E"
-    ]);
-    //////////// Require Application  /////////////////////////////
-    require("./domain/");
+  if (process.env.NODE_ENV === "development") {
+    require("../src/index.html");
+    require("../node_modules/angular-mocks");
     require("./development");
-    require("./services");
-    require("./components");
+  }
+    //////////// Initialize Angular //////////////////////////////
+  angular.module("app", [
+    "ui.codemirror",
+    "ngResource",
+    "ngSanitize"
+  ]);
+    //////////// Require Application  /////////////////////////////
+  require("./domain/");
+  require("./services");
+  require("./components");
 })(app || (app = {}));
 //# sourceMappingURL=app.js.map
