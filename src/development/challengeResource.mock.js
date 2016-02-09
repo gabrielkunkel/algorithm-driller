@@ -3,11 +3,13 @@
  */
 /// <reference path="../../typings/tsd.d.ts" />
 /* eslint max-len: 0 */
-(function () {
+var app;
+(function (app) {
   "use strict";
   angular
-        .module("appMock", ["app", "ngMockE2E"])
+        .module("appMock", ["ngMockE2E"])
         .run(challengeResourceMock);
+  challengeResourceMock.$inject = ["$httpBackend"];
   function challengeResourceMock($httpBackend) {
     var challenges = [];
     var challenge;
@@ -37,24 +39,8 @@
     challenges.push(challenge);
         // get all challenges
     $httpBackend.whenGET("api/challenge").respond(200, challenges);
-        // get a specific challenge by id number
         // pass through requests for anything else
-    $httpBackend.whenGET(/.*/).passThrough();
+    $httpBackend.whenGET(/./).passThrough();
   }
-})();
-/*
-  "use strict";
-
-    mockRun.$inject = ["$httpBackend"];
-    function mockRun($httpBackend: ng.IHttpBackendService): void {
-        var challenges: app.domain.IChallenge[] = [];
-        var challenge: app.domain.IChallenge;
-
-    }
-
-    var mockResource: any = angular
-        .module("challengeResourceMock", ["ngMockE2E"]);
-
-    mockResource.run(mockRun);
-*/
+})(app || (app = {}));
 //# sourceMappingURL=challengeResource.mock.js.map

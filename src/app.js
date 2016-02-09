@@ -6,6 +6,8 @@
 var app;
 (function (app) {
   "use strict";
+    ///////////// Non-Angular Libraries //////////////////////////
+  require("./domain/");
     //////////// Require CSS /////////////////////////////////////
   require("../node_modules/codemirror/lib/codemirror.css");
   require("./main.css");
@@ -25,10 +27,10 @@ var app;
   angular.module("app", [
     "ui.codemirror",
     "ngResource",
-    "ngSanitize"
+    "ngSanitize",
+    "appMock"
   ]);
     //////////// Require Application  /////////////////////////////
-  require("./domain/");
   require("./services");
   require("./components");
 })(app || (app = {}));

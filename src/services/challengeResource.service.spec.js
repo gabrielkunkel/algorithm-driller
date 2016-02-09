@@ -6,7 +6,9 @@
 
 describe("challenge resource service", function () {
 
-  var $httpBackend, challengeResource;
+  // todo: change tests to conform with class-based service
+
+  var $httpBackend, challengeResourceService;
   var someData = [
     { id: 1, "des": "This is one."},
     { id: 2, "des": "This is two."},
@@ -15,9 +17,9 @@ describe("challenge resource service", function () {
 
   beforeEach(angular.mock.module("app"));
 
-  beforeEach(inject(function (_$httpBackend_, _challengeResource_) {
+  beforeEach(inject(function (_$httpBackend_, _challengeResourceService_) {
     $httpBackend = _$httpBackend_;
-    challengeResource = _challengeResource_;
+    challengeResource = _challengeResourceService_;
   }));
 
   afterEach(function () {

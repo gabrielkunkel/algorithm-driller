@@ -2,16 +2,27 @@
  * Created by gabrielkunkel on 2/2/16 in TypeScript.
  */
 /// <reference path="../../typings/tsd.d.ts" />
-(function () {
-  "use strict";
-  challengeResource.$inject = ["$resource"];
-  function challengeResource($resource) {
-    return $resource("api/challenge/", {}, {
-      "update": { method: "PUT" }
-    });
-  }
-  angular
-        .module("app")
-        .factory("challengeResource", challengeResource);
-})();
+var app;
+(function (app) {
+  var services;
+  (function (services) {
+    "use strict";
+    var ChallengeResourceService = (function () {
+      function ChallengeResourceService($resource) {
+        this.$resource = $resource;
+      }
+      ChallengeResourceService.prototype.getChallengeResource = function () {
+        return this.$resource("api/challenge/", {}, {
+          "update": { method: "PUT" }
+        });
+      };
+      ChallengeResourceService.$inject = ["$resource"];
+      return ChallengeResourceService;
+    })();
+    services.ChallengeResourceService = ChallengeResourceService;
+    angular
+            .module("app")
+            .service("challengeResourceService", ChallengeResourceService);
+  })(services = app.services || (app.services = {}));
+})(app || (app = {}));
 //# sourceMappingURL=challengeResource.service.js.map

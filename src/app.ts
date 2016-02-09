@@ -9,6 +9,9 @@ import IAngularStatic = angular.IAngularStatic;
 namespace app {
     "use strict";
 
+    ///////////// Non-Angular Libraries //////////////////////////
+    require("./domain/");
+
     //////////// Require CSS /////////////////////////////////////
     require("../node_modules/codemirror/lib/codemirror.css");
     require("./main.css");
@@ -31,11 +34,11 @@ namespace app {
     angular.module("app", [
         "ui.codemirror",
         "ngResource",
-        "ngSanitize"
+        "ngSanitize",
+        "appMock"
     ]);
 
     //////////// Require Application  /////////////////////////////
-    require("./domain/");
     require("./services");
     require("./components");
 }

@@ -8,16 +8,22 @@ var app;
   (function (components) {
     "use strict";
     var Testbox = (function () {
-      function Testbox() {
-        this.textboxContent = "runThisFunction = function(str) {" +
-                    "\n\treturn str.split('').reverse().join('');" +
-                    "\n}";
+      function Testbox(challengeResourceService) {
+        var _this = this;
+        this.challengeResourceService = challengeResourceService;
         this.options = {
           indentWithTabs: true,
           lineNumbers: true,
           tabSize: 2
         };
+        this.textboxContent = "Start string";
+        var challengeResource = challengeResourceService.getChallengeResource();
+        challengeResource.query(function (data) {
+          _this.textboxContent = data[0].answerString;
+          console.log(data);
+        });
       }
+      Testbox.$inject = ["challengeResourceService"];
       return Testbox;
     })();
     function testbox() {

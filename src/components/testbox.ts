@@ -18,10 +18,22 @@ module app.components {
     }
 
     class Testbox implements ITestboxCtrl {
+        public textboxContent: string;
 
-        public textboxContent: string = "runThisFunction = function(str) {" +
-            "\n\treturn str.split('').reverse().join('');" +
-            "\n}";
+        public static $inject: string[] = ["challengeResourceService"];
+        constructor (private challengeResourceService: app.services.ChallengeResourceService) {
+
+            this.textboxContent = "Start string";
+
+            var challengeResource: ng.resource.IResourceClass<app.services.IChallengeResource>
+                = challengeResourceService.getChallengeResource();
+
+            challengeResource.query((data: app.IChallenge[]) => {
+                this.textboxContent = data[0].answerString;
+                console.log(data);
+            });
+        }
+
         public options: ITestboxOptions = {
             indentWithTabs: true,
             lineNumbers: true,

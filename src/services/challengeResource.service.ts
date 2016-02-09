@@ -4,21 +4,36 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-(function (): void {
+module app.services {
     "use strict";
 
-    interface IChallengeResourceService { }
+    export interface IChallengeResourceService {
+        getChallengeResource(): ng.resource.IResourceClass<IChallengeResource>;
+    }
 
-    challengeResource.$inject = ["$resource"];
-    function challengeResource($resource: ng.resource.IResourceService): IChallengeResourceService {
-        return $resource("api/challenge/", {},
-            {
-                "update": { method: "PUT"},
-            }
-        );
+    export interface IChallengeResource extends ng.resource.IResource<app.Challenge> {
+
+    }
+
+    export class ChallengeResourceService implements IChallengeResourceService {
+
+        public static $inject: string[] = ["$resource"];
+
+        constructor(private $resource: ng.resource.IResourceService) {
+
+        }
+
+        public getChallengeResource(): ng.resource.IResourceClass<IChallengeResource> {
+            return this.$resource("api/challenge/", {},
+                {
+                    "update": { method: "PUT"},
+                }
+            );
+        }
+
     }
 
     angular
         .module("app")
-        .factory("challengeResource", challengeResource);
-})();
+        .service("challengeResourceService", ChallengeResourceService);
+}
