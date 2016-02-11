@@ -30,7 +30,6 @@ module app.components {
 
             challengeResource.query((data: app.IChallenge[]) => {
                 this.textboxContent = data[0].answerString;
-                console.log(data);
             });
         }
 
