@@ -21,13 +21,12 @@ namespace app {
     require("../node_modules/angular-resource");
     require("../node_modules/angular-ui-codemirror");
     require("../node_modules/angular-sanitize");
+    require("../node_modules/angular-mocks");
 
     //////////// Conditional Requires for Development /////////////
     /* istanbul ignore if: only necessary for development environment */
     if (process.env.NODE_ENV === "development") {
         require("../src/index.html");
-        require("../node_modules/angular-mocks");
-        require("./development");
     }
 
     //////////// Initialize Angular //////////////////////////////
@@ -41,4 +40,5 @@ namespace app {
     //////////// Require Application  /////////////////////////////
     require("./services");
     require("./components");
+    require("./development");
 }

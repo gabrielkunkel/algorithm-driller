@@ -6,9 +6,7 @@
 
 describe("challenge resource service", function () {
 
-  // todo: change tests to conform with class-based service
-
-  var $httpBackend, challengeResourceService;
+  var $httpBackend, challengeResource, challengeResourceService;
   var someData = [
     { id: 1, "des": "This is one."},
     { id: 2, "des": "This is two."},
@@ -19,7 +17,9 @@ describe("challenge resource service", function () {
 
   beforeEach(inject(function (_$httpBackend_, _challengeResourceService_) {
     $httpBackend = _$httpBackend_;
-    challengeResource = _challengeResourceService_;
+    challengeResourceService = _challengeResourceService_;
+
+    challengeResource = challengeResourceService.getChallengeResource();
   }));
 
   afterEach(function () {

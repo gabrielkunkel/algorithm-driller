@@ -29,7 +29,7 @@ module app.components {
                 = challengeResourceService.getChallengeResource();
 
             challengeResource.query((data: app.IChallenge[]) => {
-                this.textboxContent = data[0].answerString;
+                this.textboxContent = data[2].answerString;
             });
         }
 

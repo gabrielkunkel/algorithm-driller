@@ -5,7 +5,7 @@
 
 //////////// Require Production Program ///////////
 require("./app.js");
-require("angular-mocks");
+// require("angular-mocks");
 
 //////////// Require Test Suites //////////////////
 require("./services/challengeResource.service.spec.js");
