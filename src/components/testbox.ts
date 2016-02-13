@@ -18,21 +18,74 @@ module app.components {
     }
 
     class Testbox implements ITestboxCtrl {
-        public textboxContent: string;
 
+        // services
+        public challengeResource: ng.resource.IResourceClass<app.services.IChallengeResource>;
+
+        // component: for the view
+        public textboxContent: string;
+        public showCorrect: boolean;
+
+        // domain: from the model
+        public answer: string;
+        public testArray: ITest[];
+        public challengeName: string;
+
+        // intitialize
         public static $inject: string[] = ["challengeResourceService"];
         constructor (private challengeResourceService: app.services.ChallengeResourceService) {
 
-            this.textboxContent = "Start string";
+            this.textboxContent = "function () {\n\n\t// Enter your code here. return your result\n\n}";
+            this.challengeName = "(Challenge Title)";
+            this.showCorrect = false;
 
-            var challengeResource: ng.resource.IResourceClass<app.services.IChallengeResource>
-                = challengeResourceService.getChallengeResource();
+            this.challengeResource = challengeResourceService.getChallengeResource();
 
-            challengeResource.query((data: app.IChallenge[]) => {
-                this.textboxContent = data[2].answerString;
+            this.challengeResource.query((data: app.IChallenge[]) => {
+                var dataNumber: number = 0; // exclusively for development
+
+                this.answer = data[dataNumber].answerString;
+                this.challengeName = data[dataNumber].name;
+                this.testArray = data[dataNumber].tests;
             });
         }
 
+        /**
+         * Click to detect if answer in textbox is correct. If so
+         * make this.showCorrect === true, to set up change to next
+         * algorithm challenge.
+         */
+        public tester(): void {
+            var allTestsPassed: boolean = false;
+            var testsPassed: number = 0;
+            var runThisFunction: any = eval("(" + this.textboxContent + ")");
+
+            for (var i: number = 0; i < this.testArray.length; i += 1) {
+                let evaluatedTest: boolean = eval(this.testArray[i].test);
+                if (evaluatedTest) {
+                    testsPassed += 1;
+                }
+            }
+
+            if (testsPassed === this.testArray.length) {
+                console.log("The top of testsPassed" + this.showCorrect);
+                this.showCorrect = true;
+                console.log("The bottom of testsPassed" + this.showCorrect);
+            }
+        }
+
+        /**
+         * If user has given up they can put the stored correct answer into
+         * the textbox.
+         */
+        public showAnswer(): void {
+            this.textboxContent = this.answer;
+        }
+
+        /**
+         * Options available: https://codemirror.net/doc/manual.html
+         * @type {{indentWithTabs: boolean, lineNumbers: boolean, tabSize: number}}
+         */
         public options: ITestboxOptions = {
             indentWithTabs: true,
             lineNumbers: true,

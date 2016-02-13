@@ -19,20 +19,21 @@ module app {
         var challenge: app.IChallenge;
 
         challenge = {
-            answerString: "runThisFunction = function(str) {\n\treturn str.split('').reverse().join('');\n}",
+            answerString: "function(str) {\n\treturn str.split('').reverse().join('');\n}",
             difficulty: 1,
             id: "1",
             language: 1,
             name: "Reverse a String",
             tests: [{
                 description: "make sure it reverses the string (e.g. 'start' will become 'trats)",
-                test: "function () {\n\tvar a = 'abcdef';\n\texpect(runThisFunction(a)).toEqual('fedcba');\n}"
+                jasmineTest: "function () {\n\tvar a = 'abcdef';\n\texpect(runThisFunction(a)).toEqual('fedcba');\n}",
+                test: "runThisFunction('abcdef') === 'fedcba'"
             }]
         };
         challenges.push(challenge);
 
         challenge = {
-            answerString: "runThisFunction = function(num) {\n\tif (num === 0) return 1;" +
+            answerString: "function(num) {\n\tif (num === 0) return 1;" +
             "\n\treturn num * runThisFunction(num-1);\n}",
             difficulty: 1,
             id: "2",
@@ -40,13 +41,14 @@ module app {
             name: "Factorial",
             tests: [{
                 description: "it should return the factorial of the number",
-                test: "function () {\n\texpect(runThisFunction(5)).toBe(150);\n}"
+                jasmineTest: "function () {\n\texpect(runThisFunction(5)).toBe(120);\n}",
+                test: "runThisFunction(5) === 120"
             }]
         };
         challenges.push(challenge);
 
         challenge = {
-            answerString: "runThisFunction = function(str) {\n\tvar i, arraylength, elementToCompare, " +
+            answerString: "function(str) {\n\tvar i, arraylength, elementToCompare, " +
             "winner = '', winnerLength = winner.length;" + "\n\tvar array = str.split(' ');" +
             "\n\twhile(array.length > 0) {" + "\n\t\telementToCompare = array.pop();" +
             "\n\t\tif (elementToCompare.length > winner.length) {" + "\n\t\t\twinner = elementToCompare;" +
@@ -57,11 +59,12 @@ module app {
             name: "Find the longest word in a string",
             tests: [{
                 description: "make sure it finds the loooooooonnngest word",
-                test: "function() {\n\texpect(runThisFunction('The large planter fell off of the elevator').toEqual('elevator')\n}"
-                },
-                {
-                    description: "make sure it finds the longest word, regardless of punctutation",
-                    test: "function() {\n\texpect(runThisFunction('elevator elevato.$#&').toEqual('elevator')\n}"
+                jasmineTest: "function() {\n\texpect(runThisFunction('The large planter fell off of the elevator').toEqual('elevator')\n}",
+                test: "runThisFunction('The large planter fell off of the elevator' === 'elevator'"
+                }, {
+                description: "make sure it finds the longest word, regardless of punctutation",
+                jasmineTest: "function() {\n\texpect(runThisFunction('elevator elevato.$#&').toEqual('elevator')\n}",
+                test: "runThisFunction('elevator elevato.$#&') === 'elevator'"
                 }]
         };
         challenges.push(challenge);

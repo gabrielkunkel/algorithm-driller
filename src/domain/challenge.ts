@@ -15,6 +15,7 @@ module app {
 
     export interface ITest {
         description: string;
+        jasmineTest: string;
         test: string;
     }
 
