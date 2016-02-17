@@ -4,25 +4,25 @@
 /// <reference path="../../typings/tsd.d.ts" />
 var app;
 (function (app) {
-  var services;
-  (function (services) {
-    "use strict";
-    var ChallengeResourceService = (function () {
-      function ChallengeResourceService($resource) {
-        this.$resource = $resource;
-      }
-      ChallengeResourceService.prototype.getChallengeResource = function () {
-        return this.$resource("api/challenge/", {}, {
-          "update": { method: "PUT" }
-        });
-      };
-      ChallengeResourceService.$inject = ["$resource"];
-      return ChallengeResourceService;
-    })();
-    services.ChallengeResourceService = ChallengeResourceService;
-    angular
+    var services;
+    (function (services) {
+        "use strict";
+        var ChallengeResourceService = (function () {
+            function ChallengeResourceService($resource) {
+                this.$resource = $resource;
+            }
+            ChallengeResourceService.prototype.getChallengeResource = function () {
+                return this.$resource("api/challenge/", {}, {
+                    "update": { method: "PUT" }
+                });
+            };
+            ChallengeResourceService.$inject = ["$resource"];
+            return ChallengeResourceService;
+        })();
+        services.ChallengeResourceService = ChallengeResourceService;
+        angular
             .module("app")
             .service("challengeResourceService", ChallengeResourceService);
-  })(services = app.services || (app.services = {}));
+    })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 //# sourceMappingURL=challengeResource.service.js.map

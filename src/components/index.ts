@@ -6,3 +6,4 @@
 
 require("./durian.js");
 require("./testbox.js");
+require("./dashboard.js");

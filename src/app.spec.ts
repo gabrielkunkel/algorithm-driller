@@ -9,4 +9,4 @@ require("./app.js");
 
 //////////// Require Test Suites //////////////////
 require("./services/challengeResource.service.spec.js");
-
+require("./services/flashcardQueue.service.spec.js");

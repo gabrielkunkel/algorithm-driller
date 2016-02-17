@@ -12,6 +12,12 @@ var challengeSchema = mongoose.Schema({
   name: String,
   tests: Array
 
+  // times gotten incorrect per user session: array
+  // jasmine tests in tests
+  // alternative solutions
+  // description of the problem
+  //
+
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);

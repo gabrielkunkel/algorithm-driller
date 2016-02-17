@@ -4,4 +4,5 @@
 /// <reference path="../../typings/tsd.d.ts" />
 require("./durian.js");
 require("./testbox.js");
+require("./dashboard.js");
 //# sourceMappingURL=index.js.map

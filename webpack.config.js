@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 var webpack = require('webpack');
-var WebpackNotifierPlugin = require('webpack-notifier');
+// var WebpackNotifierPlugin = require('webpack-notifier');
 // var HtmlWebpackPlugin = require('html-webpack-plugin');
 var here = require('path-here');
 var _ = require('lodash');
@@ -53,9 +53,9 @@ function getDevConfig() {
 
     plugins: [],
 
-/*    resolve: {
+    resolve: {
       extensions: ['', '.js']
-    },*/
+    },
 
     module: {
       loaders: _.union(
@@ -87,7 +87,7 @@ function getDevConfig() {
 
   if (process.env.CI !== 'true') {
     devConfig.plugins = [
-      new WebpackNotifierPlugin()
+     // new WebpackNotifierPlugin()
     ];
   }
   return devConfig;
@@ -98,7 +98,7 @@ function getJavaScriptLoaders() {
     return [
       {
         test: /\.js$/,
-        loaders: ['ng-annotate', 'eslint?fix'],
+        loaders: ['ng-annotate'],
         exclude: exclude
     }
     ];
@@ -142,7 +142,8 @@ function getProdConfig(noUglify) {
 
   // allow getting rid of the UglifyJsPlugin
   // https://github.com/webpack/webpack/issues/1079
-  if (!noUglify) {
+  if (noUglify) { //return this to !noUglify
+    // todo: make uglification work with angular codemirror ui or pull it out
     prodConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false}
     }));

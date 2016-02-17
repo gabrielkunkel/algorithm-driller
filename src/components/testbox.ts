@@ -68,9 +68,7 @@ module app.components {
             }
 
             if (testsPassed === this.testArray.length) {
-                console.log("The top of testsPassed" + this.showCorrect);
                 this.showCorrect = true;
-                console.log("The bottom of testsPassed" + this.showCorrect);
             }
         }
 

@@ -5,3 +5,4 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 require("./challengeResource.service.js");
+require("./flashcardQueue.service.js");
