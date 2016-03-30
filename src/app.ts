@@ -6,44 +6,43 @@
 
 import IAngularStatic = angular.IAngularStatic;
 
-namespace app {
-    "use strict";
+"use strict";
 
-    ///////////// Non-Angular Libraries //////////////////////////
-    require("./domain/");
+///////////// Non-Angular Libraries //////////////////////////
+require("./domain/");
 
-    //////////// Require CSS /////////////////////////////////////
-    require("./codemirror.css");
-    require("./main.css");
+//////////// Require CSS /////////////////////////////////////
+require("./codemirror.css");
+require("./main.css");
 
-    //////////// Require Libraries ///////////////////////////////
-    var angular: IAngularStatic = require("angular");
-    require("../node_modules/angular-resource");
-    require("../node_modules/angular-ui-codemirror/src/ui-codemirror.js");
-    require("../node_modules/angular-sanitize");
-    require("../node_modules/angular-route");
-    require("../node_modules/angular-mocks");
+//////////// Require Libraries ///////////////////////////////
+var angular: IAngularStatic = require("angular");
+require("../node_modules/angular-resource");
+require("../node_modules/angular-ui-codemirror/src/ui-codemirror.js");
+require("../node_modules/angular-sanitize");
+require("../node_modules/angular-route");
+require("../node_modules/angular-mocks");
 
-    //////////// Conditional Requires for Development /////////////
-    /* istanbul ignore if: only necessary for development environment */
-    if (process.env.NODE_ENV === "development") {
-        require("../src/index.html");
-    }
-
-    //////////// Initialize Angular //////////////////////////////
-    angular.module("app", [
-        "ui.codemirror",
-        "ngResource",
-        "ngSanitize",
-        "ngRoute",
-        "appMock"
-    ]);
-
-    //////////// Require Application  /////////////////////////////
-    require("./app.config.js");
-    require("./services");
-    require("./components");
-    require("./development");
+//////////// Conditional Requires for Development /////////////
+/* istanbul ignore if: only necessary for development environment */
+if (process.env.NODE_ENV === "development") {
+    require("../src/index.html");
 }
+
+//////////// Initialize Angular //////////////////////////////
+angular.module("app", [
+    "ui.codemirror",
+    "ngResource",
+    "ngSanitize",
+    "ngRoute",
+    "appMock"
+]);
+
+//////////// Require Application  /////////////////////////////
+require("./app.config.js");
+require("./services");
+require("./components");
+require("./development");
+
 
 // todo: fix build, try changing up loaders

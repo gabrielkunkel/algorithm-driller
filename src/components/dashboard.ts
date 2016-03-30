@@ -4,31 +4,27 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app.components {
-    "use strict";
+interface IDashboardCtrl {
 
-    interface IDashboardCtrl {
-
-    }
-
-    class Dashboard implements IDashboardCtrl {
-
-        // this component's controller is empty for now.
-
-    }
-
-    function dashboard(): ng.IDirective {
-        return {
-            bindToController: true,
-            controller: Dashboard,
-            controllerAs: "vm",
-            replace: true,
-            restrict: "AE",
-            template: require("./dashboard.html"),
-        };
-    }
-
-    angular
-        .module("app")
-        .directive("dashboard", dashboard);
 }
+
+class Dashboard implements IDashboardCtrl {
+
+    // this component's controller is empty for now.
+
+}
+
+function dashboard(): ng.IDirective {
+    return {
+        bindToController: true,
+        controller: Dashboard,
+        controllerAs: "vm",
+        replace: true,
+        restrict: "AE",
+        template: require("./dashboard.html"),
+    };
+}
+
+angular
+    .module("app")
+    .directive("dashboard", dashboard);

@@ -4,41 +4,38 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app {
-  "use strict";
+export enum languages {
+    Java,
+    JavaScript,
+    Ruby,
+}
 
-    export enum languages {
-        Java,
-        JavaScript,
-        Ruby,
-    }
+export interface ITest {
+    description: string;
+    jasmineTest: string;
+    test: string;
+}
 
-    export interface ITest {
-        description: string;
-        jasmineTest: string;
-        test: string;
-    }
+export interface IChallenge {
+    answerString: string;
+    difficulty: number;
+    id: string;
+    language: languages;
+    name: string;
+    tests: ITest[];
+}
 
-    export interface IChallenge {
-        answerString: string;
-        difficulty: number;
-        id: string;
-        language: languages;
-        name: string;
-        tests: ITest[];
-    }
+export class Challenge implements IChallenge {
 
-    export class Challenge implements IChallenge {
-
-        constructor(public answerString: string,
-                    public difficulty: number,
-                    public id: string,
-                    public language: languages,
-                    public name: string,
-                    public tests: ITest[]) {
-
-        }
+    constructor(public answerString: string,
+                public difficulty: number,
+                public id: string,
+                public language: languages,
+                public name: string,
+                public tests: ITest[]) {
 
     }
 
 }
+
+

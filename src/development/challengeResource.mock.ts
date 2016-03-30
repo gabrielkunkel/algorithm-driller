@@ -6,17 +6,16 @@
 
 /* eslint max-len: 0 */
 
-module app {
-    "use strict";
+import {IChallenge} from "../domain/challenge";
 
-    angular
+angular
         .module("appMock", ["ngMockE2E"])
         .run(challengeResourceMock);
 
     challengeResourceMock.$inject = ["$httpBackend"];
     function challengeResourceMock($httpBackend: ng.IHttpBackendService): void {
-        var challenges: app.IChallenge[] = [];
-        var challenge: app.IChallenge;
+        var challenges: IChallenge[] = [];
+        var challenge: IChallenge;
 
         challenge = {
             answerString: "function(str) {\n\treturn str.split('').reverse().join('');\n}",
@@ -75,6 +74,4 @@ module app {
         // pass through requests for anything else
         $httpBackend.whenGET(/./).passThrough();
     }
-
-}
 

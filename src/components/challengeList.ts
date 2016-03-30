@@ -1,49 +1,48 @@
+import {IChallenge} from "../domain/challenge";
+import {IChallengeResource, ChallengeResourceService} from "../services/challengeResource.service";
 /**
  * Created by gabrielkunkel on 3/22/16 in TypeScript.
  */
+/// <reference path="../../typings/tsd.d.ts" />
 
-    /// <reference path="../../typings/tsd.d.ts" />
 
-    module app.component {
-        "use strict";
+interface IChallengeListCtrl {
 
-        interface IChallengeListCtrl {
+}
 
-        }
+class ChallengeList implements IChallengeListCtrl {
+ 
+    public challengeResource: ng.resource.IResourceClass<IChallengeResource>;
+    public challengeCollection: IChallenge[];
 
-        class ChallengeList implements IChallengeListCtrl {
+    public static $inject: string[] = ["challengeResourceService"];
 
-            public challengeResource: ng.resource.IResourceClass<app.services.IChallengeResource>;
-            public challengeCollection: IChallenge[];
+    constructor(private challengeResourceService: ChallengeResourceService) {
 
-            public static $inject: string[] = ["challengeResourceService"];
+        this.challengeResource = challengeResourceService.getChallengeResource();
+        this.challengeResource.query((data: IChallenge[]) => {
+            this.challengeCollection = data;
+        });
 
-            constructor (private challengeResourceService: app.services.ChallengeResourceService) {
-
-                this.challengeResource = challengeResourceService.getChallengeResource();
-                this.challengeResource.query((data: app.IChallenge[]) => {
-                    this.challengeCollection = data;
-                });
-
-            }
-
-        }
-
-        function challengeList(): ng.IDirective {
-            return {
-                bindToController: true,
-                controller: ChallengeList,
-                controllerAs: "vm",
-                replace: true,
-                restrict: "AE",
-                scope: {
-                  challengeCollection: "="
-                },
-                template: require("./challengeList.html"),
-            };
-        }
-
-        angular
-            .module("app")
-            .directive("challengeList", challengeList);
     }
+
+}
+
+function challengeList(): ng.IDirective {
+    return {
+        bindToController: true,
+        controller: ChallengeList,
+        controllerAs: "vm",
+        replace: true,
+        restrict: "AE",
+        scope: {
+            challengeCollection: "="
+        },
+        template: require("./challengeList.html"),
+    };
+}
+
+angular
+    .module("app")
+    .directive("challengeList", challengeList);
+

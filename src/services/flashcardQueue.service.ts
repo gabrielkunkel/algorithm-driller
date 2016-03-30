@@ -1,88 +1,87 @@
+import {IChallenge} from "../domain/challenge";
 /**
  * Created by gabrielkunkel on 2/15/16 in TypeScript.
  */
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-namespace app.services {
-    "use strict";
 
-    export interface IFlashCardQueue {
-        queue: IChallenge[];
-        addToQueue(challenges: IChallenge[]): void;
-        getFromQueue(): IChallenge;
-        queueLength(): number;
-        emptyQueue(): void;
-        removeById(id: string): void;
+export interface IFlashCardQueue {
+    queue: IChallenge[];
+    addToQueue(challenges: IChallenge[]): void;
+    getFromQueue(): IChallenge;
+    queueLength(): number;
+    emptyQueue(): void;
+    removeById(id: string): void;
+}
+
+export class FlashCardQueue implements IFlashCardQueue {
+    public queue: IChallenge[];
+
+    constructor() {
+        this.queue = [];
+
     }
 
-    export class FlashCardQueue implements IFlashCardQueue {
-        public queue: IChallenge[];
+    /* tslint:disable:no-shadowed-variable no-use-before-declare */
 
-        constructor() {
-            this.queue = [];
-
+    /**
+     *
+     * @param {Array|Object} challenges
+     */
+    public addToQueue(challenges: IChallenge[]): void {
+        if (!challenges) {
+            return;
         }
 
-        /* tslint:disable:no-shadowed-variable no-use-before-declare */
+        if (!Array.isArray(challenges)) {
+            var _challenges: IChallenge[] = [];
 
-        /**
-         *
-         * @param {Array|Object} challenges
-         */
-        public addToQueue(challenges: IChallenge[]): void {
-            if (!challenges) {
-                return;
+            for (var i: number = 0; i < arguments.length; i += 1) {
+                _challenges[i] = arguments[i];
             }
+            var challenges: IChallenge[] = _challenges;
+        }
 
-            if (!Array.isArray(challenges)) {
-                var _challenges: IChallenge[] = [];
+        while (challenges.length) {
+            this.queue.unshift(challenges.pop());
+        }
 
-                for (var i: number = 0; i < arguments.length; i += 1) {
-                    _challenges[i] = arguments[i];
-                }
-                var challenges: IChallenge[] = _challenges;
+    }
+
+    /* tslint:enable:no-shadowed-variable no-use-before-declare */
+
+    public getFromQueue(): IChallenge {
+        return this.queue.pop();
+    }
+
+    public queueLength(): number {
+        return this.queue.length;
+    }
+
+    public emptyQueue(): void {
+        this.queue = [];
+    }
+
+    public removeById(id: string): void {
+        var queueTemp: IChallenge[] = [];
+        var queueResult: IChallenge[] = [];
+
+        this.queue.forEach(function (element: IChallenge): void {
+            if (element.id === id) {
+                queueResult.push(element);
             }
-
-            while (challenges.length) {
-                this.queue.unshift(challenges.pop());
+            else {
+                queueTemp.push(element);
             }
+        });
 
-        }
-        /* tslint:enable:no-shadowed-variable no-use-before-declare */
+        this.queue = queueTemp; // replace the queue with our temporary queue
+    } // removeById
 
-        public getFromQueue(): IChallenge {
-            return this.queue.pop();
-        }
-
-        public queueLength(): number {
-            return this.queue.length;
-        }
-
-        public emptyQueue(): void {
-            this.queue = [];
-        }
-
-        public removeById(id: string): void {
-            var queueTemp: IChallenge[] = [];
-            var queueResult: IChallenge[] = [];
-
-            this.queue.forEach(function (element: IChallenge): void {
-                if (element.id === id) {
-                    queueResult.push(element);
-                }
-                else {
-                    queueTemp.push(element);
-                }
-            });
-
-            this.queue = queueTemp; // replace the queue with our temporary queue
-        } // removeById
-
-    } // class
+} // class
 
 
-    angular
-        .module("app")
-        .service("flashCardQueue", FlashCardQueue);
-}
+angular
+    .module("app")
+    .service("flashCardQueue", FlashCardQueue);
