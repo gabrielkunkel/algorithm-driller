@@ -20,10 +20,10 @@ var app;
       language: 1,
       name: "Reverse a String",
       tests: [{
-        description: "make sure it reverses the string (e.g. 'start' will become 'trats)",
-        jasmineTest: "function () {\n\tvar a = 'abcdef';\n\texpect(runThisFunction(a)).toEqual('fedcba');\n}",
-        test: "runThisFunction('abcdef') === 'fedcba'"
-      }]
+          description: "make sure it reverses the string (e.g. 'start' will become 'trats)",
+          jasmineTest: "function () {\n\tvar a = 'abcdef';\n\texpect(runThisFunction(a)).toEqual('fedcba');\n}",
+          test: "runThisFunction('abcdef') === 'fedcba'"
+        }]
     };
     challenges.push(challenge);
     challenge = {
@@ -34,10 +34,10 @@ var app;
       language: 1,
       name: "Factorial",
       tests: [{
-        description: "it should return the factorial of the number",
-        jasmineTest: "function () {\n\texpect(runThisFunction(5)).toBe(120);\n}",
-        test: "runThisFunction(5) === 120"
-      }]
+          description: "it should return the factorial of the number",
+          jasmineTest: "function () {\n\texpect(runThisFunction(5)).toBe(120);\n}",
+          test: "runThisFunction(5) === 120"
+        }]
     };
     challenges.push(challenge);
     challenge = {
@@ -51,14 +51,14 @@ var app;
       language: 1,
       name: "Find the longest word in a string",
       tests: [{
-        description: "make sure it finds the loooooooonnngest word",
-        jasmineTest: "function() {\n\texpect(runThisFunction('The large planter fell off of the elevator').toEqual('elevator')\n}",
-        test: "runThisFunction('The large planter fell off of the elevator' === 'elevator'"
-      }, {
-        description: "make sure it finds the longest word, regardless of punctutation",
-        jasmineTest: "function() {\n\texpect(runThisFunction('elevator elevato.$#&').toEqual('elevator')\n}",
-        test: "runThisFunction('elevator elevato.$#&') === 'elevator'"
-      }]
+          description: "make sure it finds the loooooooonnngest word",
+          jasmineTest: "function() {\n\texpect(runThisFunction('The large planter fell off of the elevator').toEqual('elevator')\n}",
+          test: "runThisFunction('The large planter fell off of the elevator' === 'elevator'"
+        }, {
+            description: "make sure it finds the longest word, regardless of punctutation",
+            jasmineTest: "function() {\n\texpect(runThisFunction('elevator elevato.$#&').toEqual('elevator')\n}",
+            test: "runThisFunction('elevator elevato.$#&') === 'elevator'"
+          }]
     };
     challenges.push(challenge);
         // get all challenges

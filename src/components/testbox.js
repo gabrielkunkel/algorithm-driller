@@ -60,7 +60,7 @@ var app;
             // intitialize
             Testbox.$inject = ["challengeResourceService"];
             return Testbox;
-        })();
+        }());
         function testbox() {
             return {
                 bindToController: true,

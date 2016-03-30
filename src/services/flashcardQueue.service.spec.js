@@ -138,4 +138,22 @@ describe("The flashcard queue service", function () {
     expect(flashCardQueue.queue).toEqual(start.concat(toBeAdded));
   }); // end it
 
+  it("should remove a specfic challenge from the Queue by id", function() {
+    var originalLength = flashCardQueue.queue.length;
+
+    flashCardQueue.removeById("1");
+
+    expect(flashCardQueue.queue.length).toBe(originalLength - 1);
+
+    var isThereChallengeWithThatId = false;
+    flashCardQueue.queue.forEach(function (element) {
+      if (element.id === "1") {
+        isThereChallengeWithThatId = true;
+      }
+    });
+
+    expect(isThereChallengeWithThatId).toBe(false);
+  }); // end it
+
+
 }); // end describe

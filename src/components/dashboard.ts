@@ -13,9 +13,7 @@ module app.components {
 
     class Dashboard implements IDashboardCtrl {
 
-        // todo: add retrieving and organizing all of the challenges
-
-        // todo: on-click add all selected challenges to the queue with flashcardQueue service
+        // this component's controller is empty for now.
 
     }
 

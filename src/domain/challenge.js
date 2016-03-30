@@ -21,7 +21,7 @@ var app;
             this.tests = tests;
         }
         return Challenge;
-    })();
+    }());
     app.Challenge = Challenge;
 })(app || (app = {}));
 //# sourceMappingURL=challenge.js.map

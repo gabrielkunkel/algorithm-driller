@@ -18,8 +18,8 @@ var app;
             };
             ChallengeResourceService.$inject = ["$resource"];
             return ChallengeResourceService;
-        })();
-        services.ChallengeResourceService = ChallengeResourceService;
+        }());
+        services.ChallengeResourceService = ChallengeResourceService; // class
         angular
             .module("app")
             .service("challengeResourceService", ChallengeResourceService);

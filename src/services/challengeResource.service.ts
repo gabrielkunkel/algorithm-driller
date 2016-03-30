@@ -4,7 +4,7 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app.services {
+namespace app.services {
     "use strict";
 
     export interface IChallengeResourceService {
@@ -31,7 +31,7 @@ module app.services {
             );
         }
 
-    }
+    } // class
 
     angular
         .module("app")

@@ -4,15 +4,20 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-module app.services {
+namespace app.services {
     "use strict";
 
     export interface IFlashCardQueue {
-
+        queue: IChallenge[];
+        addToQueue(challenges: IChallenge[]): void;
+        getFromQueue(): IChallenge;
+        queueLength(): number;
+        emptyQueue(): void;
+        removeById(id: string): void;
     }
 
-    class FlashCardQueue implements IFlashCardQueue {
-        private queue: IChallenge[];
+    export class FlashCardQueue implements IFlashCardQueue {
+        public queue: IChallenge[];
 
         constructor() {
             this.queue = [];
@@ -23,10 +28,14 @@ module app.services {
 
         /**
          *
-         * @param {Array|Object} challenge(s)
+         * @param {Array|Object} challenges
          */
         public addToQueue(challenges: IChallenge[]): void {
-            if (!challenges || !Array.isArray(challenges)) {
+            if (!challenges) {
+                return;
+            }
+
+            if (!Array.isArray(challenges)) {
                 var _challenges: IChallenge[] = [];
 
                 for (var i: number = 0; i < arguments.length; i += 1) {
@@ -54,7 +63,23 @@ module app.services {
             this.queue = [];
         }
 
-    }
+        public removeById(id: string): void {
+            var queueTemp: IChallenge[] = [];
+            var queueResult: IChallenge[] = [];
+
+            this.queue.forEach(function (element: IChallenge): void {
+                if (element.id === id) {
+                    queueResult.push(element);
+                }
+                else {
+                    queueTemp.push(element);
+                }
+            });
+
+            this.queue = queueTemp; // replace the queue with our temporary queue
+        } // removeById
+
+    } // class
 
 
     angular
