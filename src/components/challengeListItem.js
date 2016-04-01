@@ -1,7 +1,8 @@
 "use strict";
 var ChallengeListItem = (function () {
+    // isChecked
     function ChallengeListItem(flashCardQueue) {
-        // type code here
+        // code here
         this.flashCardQueue = flashCardQueue;
     }
     ChallengeListItem.$inject = ["flashCardQueue"];
@@ -14,6 +15,10 @@ function challengeListItem() {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
+        scope: {
+            onCheck: "&",
+            onUnCheck: "&"
+        },
         template: require("./challengeListItem.html")
     };
 }

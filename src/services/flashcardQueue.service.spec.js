@@ -155,5 +155,13 @@ describe("The flashcard queue service", function () {
     expect(isThereChallengeWithThatId).toBe(false);
   }); // end it
 
+  it("should return true if a specfic challenge (that should be there) is in the queue, by id", function() {
+
+    expect(flashCardQueue.existsById("1")).toBe(true);
+  }); // end it
+
+  it("should return false when checking if a specific challenge is there that's not", function() {
+    expect(flashCardQueue.existsById("5")).toBe(false);
+  }); // end it
 
 }); // end describe

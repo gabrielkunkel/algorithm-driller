@@ -13,6 +13,7 @@ export interface IFlashCardQueue {
     queueLength(): number;
     emptyQueue(): void;
     removeById(id: string): void;
+    existsById(id: string): boolean;
 }
 
 export class FlashCardQueue implements IFlashCardQueue {
@@ -78,6 +79,18 @@ export class FlashCardQueue implements IFlashCardQueue {
 
         this.queue = queueTemp; // replace the queue with our temporary queue
     } // removeById
+    
+    public existsById(id: string): boolean {
+        var exists: boolean = false;
+
+        for (let i: number = 0; i < this.queue.length; i += 1) {
+            if (this.queue[i].id === id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 } // class
 

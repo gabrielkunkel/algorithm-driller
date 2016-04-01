@@ -24,6 +24,16 @@ class ChallengeList implements IChallengeListCtrl {
             this.challengeCollection = data;
         });
 
+        // should we get the qurue and check all of those that are in the queue
+
+    }
+
+    public onCheckboxCheck(id: string): void {
+
+    }
+
+    public onCheckboxUnCheck(id: string): void {
+
     }
 
 }

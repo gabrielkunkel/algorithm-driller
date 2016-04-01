@@ -46,6 +46,15 @@ var FlashCardQueue = (function () {
         });
         this.queue = queueTemp; // replace the queue with our temporary queue
     }; // removeById
+    FlashCardQueue.prototype.existsById = function (id) {
+        var exists = false;
+        for (var i = 0; i < this.queue.length; i += 1) {
+            if (this.queue[i].id === id) {
+                return true;
+            }
+        }
+        return false;
+    };
     return FlashCardQueue;
 }());
 exports.FlashCardQueue = FlashCardQueue; // class

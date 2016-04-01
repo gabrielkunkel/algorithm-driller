@@ -15,10 +15,15 @@ class ChallengeListItem implements IItemCtrl {
 
     public static $inject: string[] = ["flashCardQueue"];
 
+    // isChecked
+
     constructor (private flashCardQueue: IFlashCardQueue) {
-        // type code here
+        // code here
 
     }
+
+    
+
 }
 
 function challengeListItem(): ng.IDirective {
@@ -28,6 +33,10 @@ function challengeListItem(): ng.IDirective {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
+        scope: {
+            onCheck: "&",
+            onUnCheck: "&"
+        },
         template: require("./challengeListItem.html"),
     };
 }

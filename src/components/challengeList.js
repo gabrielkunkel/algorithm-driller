@@ -7,7 +7,12 @@ var ChallengeList = (function () {
         this.challengeResource.query(function (data) {
             _this.challengeCollection = data;
         });
+        // should we get the qurue and check all of those that are in the queue
     }
+    ChallengeList.prototype.onCheckboxCheck = function (id) {
+    };
+    ChallengeList.prototype.onCheckboxUnCheck = function (id) {
+    };
     ChallengeList.$inject = ["challengeResourceService"];
     return ChallengeList;
 }());
