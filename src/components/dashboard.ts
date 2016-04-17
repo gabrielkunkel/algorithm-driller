@@ -10,7 +10,15 @@ interface IDashboardCtrl {
 
 class Dashboard implements IDashboardCtrl {
 
-    // this component's controller is empty for now.
+    constructor(public $location: ng.ILocationService) {
+        console.log($location.path());
+
+    }
+
+    public goToChallenges(): void {
+        this.$location.replace();
+        this.$location.path("/");
+    }
 
 }
 

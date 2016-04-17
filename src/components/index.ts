@@ -7,3 +7,6 @@
 require("./durian.js");
 require("./testbox.js");
 require("./dashboard.js");
+require("./challengeList.js");
+require("./challengeListItem.js");
+require("./challenges.js");

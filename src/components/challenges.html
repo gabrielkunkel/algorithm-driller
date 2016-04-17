@@ -1,0 +1,12 @@
+<div>
+  <h1>Challenges Component</h1>
+  {{ vm.challengeName }} =
+  <textarea ui-codemirror="vm.codeMirrorOptionsEdit" ng-model="vm.testBoxContents" title="testbox"></textarea>
+  <div ng-show="vm.showAnswer"><textarea ui-codemirror="vm.codeMirrorOptionsDisplay" ng-model="vm.answerBoxContent" title="testbox"></textarea></div>
+  <div id="wrong" ng-show="vm.showWrong">Incorrect. You'll see this challenge again, soon.</div>
+  <div id="right" ng-show="vm.showCorrect">Correct. This flashcard will be removed.</div>
+  <button ng-show="vm.showAnswerButton" ng-click="vm.showAnswerMethod()">Show Answer</button>
+  <button ng-click="vm.onCheckAnswer()" ng-hide="vm.hideCheckAnswerButton">Check Answer</button>
+  <button ng-click="vm.nextChallenge()" ng-show="vm.showGoToNextChallengeButton">Go To Next Challenge</button>
+  {{ vm.test}}
+</div>

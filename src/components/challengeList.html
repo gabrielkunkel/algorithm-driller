@@ -1,5 +1,6 @@
 <div>
+  This is the challenge list.
   <div ng-repeat="challenge in vm.challengeCollection">
-    <div ng-transclude></div>
+    <challenge-list-item challenge-object="challenge"></challenge-list-item>
   </div>
 </div>

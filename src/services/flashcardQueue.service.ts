@@ -3,12 +3,12 @@ import {IChallenge} from "../domain/challenge";
  * Created by gabrielkunkel on 2/15/16 in TypeScript.
  */
 
-/// <reference path="../../typings/tsd.d.ts" />
+
 
 
 export interface IFlashCardQueue {
     queue: IChallenge[];
-    addToQueue(challenges: IChallenge[]): void;
+    addToQueue(challenge: IChallenge): void;
     getFromQueue(): IChallenge;
     queueLength(): number;
     emptyQueue(): void;
@@ -27,26 +27,17 @@ export class FlashCardQueue implements IFlashCardQueue {
     /* tslint:disable:no-shadowed-variable no-use-before-declare */
 
     /**
+     * @description will accept either an array, a list of challenges as
+     * arguments.
      *
-     * @param {Array|Object} challenges
+     * @param {Array|Object} challenge
      */
-    public addToQueue(challenges: IChallenge[]): void {
-        if (!challenges) {
+    public addToQueue(challenge: IChallenge): void {
+        if (!challenge) {
             return;
         }
 
-        if (!Array.isArray(challenges)) {
-            var _challenges: IChallenge[] = [];
-
-            for (var i: number = 0; i < arguments.length; i += 1) {
-                _challenges[i] = arguments[i];
-            }
-            var challenges: IChallenge[] = _challenges;
-        }
-
-        while (challenges.length) {
-            this.queue.unshift(challenges.pop());
-        }
+        this.queue.unshift(challenge);
 
     }
 
@@ -81,8 +72,6 @@ export class FlashCardQueue implements IFlashCardQueue {
     } // removeById
     
     public existsById(id: string): boolean {
-        var exists: boolean = false;
-
         for (let i: number = 0; i < this.queue.length; i += 1) {
             if (this.queue[i].id === id) {
                 return true;

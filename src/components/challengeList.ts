@@ -20,20 +20,10 @@ class ChallengeList implements IChallengeListCtrl {
     constructor(private challengeResourceService: ChallengeResourceService) {
 
         this.challengeResource = challengeResourceService.getChallengeResource();
-        this.challengeResource.query((data: IChallenge[]) => {
-            this.challengeCollection = data;
+        this.challengeResource.query().$promise.then((data: any) => {
+            var dataJsoned: string = angular.toJson(data);
+            this.challengeCollection = angular.fromJson(dataJsoned);
         });
-
-        // should we get the qurue and check all of those that are in the queue
-
-    }
-
-    public onCheckboxCheck(id: string): void {
-
-    }
-
-    public onCheckboxUnCheck(id: string): void {
-
     }
 
 }
@@ -45,9 +35,6 @@ function challengeList(): ng.IDirective {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
-        scope: {
-            challengeCollection: "="
-        },
         template: require("./challengeList.html"),
     };
 }

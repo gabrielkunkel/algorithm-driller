@@ -9,8 +9,8 @@
 import {IChallenge} from "../domain/challenge";
 
 angular
-        .module("appMock", ["ngMockE2E"])
-        .run(challengeResourceMock);
+    .module("appMock", ["ngMockE2E"])
+    .run(challengeResourceMock);
 
     challengeResourceMock.$inject = ["$httpBackend"];
     function challengeResourceMock($httpBackend: ng.IHttpBackendService): void {

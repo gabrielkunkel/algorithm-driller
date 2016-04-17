@@ -8,4 +8,5 @@ require("./app.js");
 //////////// Require Test Suites //////////////////
 require("./services/challengeResource.service.spec.js");
 require("./services/flashcardQueue.service.spec.js");
+require("./components/challenges.spec.js");
 //# sourceMappingURL=app.spec.js.map

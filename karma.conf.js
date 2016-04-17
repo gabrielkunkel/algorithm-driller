@@ -43,6 +43,7 @@ module.exports = function(config) {
     files: [
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
       './node_modules/jquery/dist/jquery.js',
+      './src/codemirror-compressed.js',
       entry
     ],
     exclude: [],

@@ -4,15 +4,11 @@ var ChallengeList = (function () {
         var _this = this;
         this.challengeResourceService = challengeResourceService;
         this.challengeResource = challengeResourceService.getChallengeResource();
-        this.challengeResource.query(function (data) {
-            _this.challengeCollection = data;
+        this.challengeResource.query().$promise.then(function (data) {
+            var dataJsoned = angular.toJson(data);
+            _this.challengeCollection = angular.fromJson(dataJsoned);
         });
-        // should we get the qurue and check all of those that are in the queue
     }
-    ChallengeList.prototype.onCheckboxCheck = function (id) {
-    };
-    ChallengeList.prototype.onCheckboxUnCheck = function (id) {
-    };
     ChallengeList.$inject = ["challengeResourceService"];
     return ChallengeList;
 }());
@@ -23,9 +19,6 @@ function challengeList() {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
-        scope: {
-            challengeCollection: "="
-        },
         template: require("./challengeList.html")
     };
 }

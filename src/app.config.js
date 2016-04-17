@@ -4,7 +4,7 @@
 /// <reference path="../typings/tsd.d.ts" />
 config.$inject = ["$locationProvider", "$logProvider", "$routeProvider"];
 function config($locationProvider, $logProvider, $routeProvider) {
-    // todo: fix the html 5 mode. This was casuing routing problems
+    // todo: fix the html 5 mode. This was causing routing problems
     // $locationProvider.html5Mode({
     //    enabled: true,
     //    requireBase: false
@@ -21,7 +21,7 @@ function config($locationProvider, $logProvider, $routeProvider) {
         template: "<dashboard></dashboard>"
     })
         .when("/challenges", {
-        template: "<testbox></testbox>"
+        template: "<challenges></challenges>"
     })
         .otherwise("/dashboard");
 }

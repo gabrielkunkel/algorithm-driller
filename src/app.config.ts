@@ -10,7 +10,7 @@ function config($locationProvider: ng.ILocationProvider,
                 $logProvider: ng.ILogProvider,
                 $routeProvider: ng.route.IRouteProvider): void {
 
-    // todo: fix the html 5 mode. This was casuing routing problems
+    // todo: fix the html 5 mode. This was causing routing problems
     // $locationProvider.html5Mode({
     //    enabled: true,
     //    requireBase: false
@@ -27,7 +27,7 @@ function config($locationProvider: ng.ILocationProvider,
             template: "<dashboard></dashboard>"
         })
         .when("/challenges", {
-            template: "<testbox></testbox>"
+            template: "<challenges></challenges>"
         })
         .otherwise("/dashboard");
 

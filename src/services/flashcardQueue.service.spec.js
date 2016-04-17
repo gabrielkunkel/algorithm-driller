@@ -67,9 +67,10 @@ describe("The flashcard queue service", function () {
       }]
     };
 
+    expect(flashCardQueue.existsById("2")).toBe(false);
     flashCardQueue.addToQueue(aChallengeToAdd);
-
     expect(flashCardQueue.queue.length).toBe(3);
+    expect(flashCardQueue.existsById("2")).toBe(true);
   }); // end it
 
   it("empties the queue", function() {
@@ -94,8 +95,8 @@ describe("The flashcard queue service", function () {
     expect(flashCardQueue.queueLength()).toBe(flashCardQueue.queue.length);
   }); // end it
 
-
-  it("adds a number of flashcards", function() {
+  // if it makes sense to add a function which adds more than one IChallenge at a time. Update this.
+  xit("adds a number of flashcards", function() {
     expect(flashCardQueue.queue.length).toBe(2);
     var start = flashCardQueue.queue;
     var toBeAdded = [{

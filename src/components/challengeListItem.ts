@@ -1,4 +1,5 @@
 import {IFlashCardQueue} from "../services/flashcardQueue.service";
+import {IChallenge} from "../domain/challenge";
 
 /**
  * Created by gabrielkunkel on 3/28/16 in TypeScript.
@@ -7,7 +8,11 @@ import {IFlashCardQueue} from "../services/flashcardQueue.service";
     /// <reference path="../../typings/tsd.d.ts" />
 
 interface IItemCtrl {
-
+    isChecked: boolean;
+    challengeObject: IChallenge;
+    switchCheck(): void;
+    onCheck(): void;
+    onUnCheck(): void;
 }
 
 
@@ -15,14 +20,35 @@ class ChallengeListItem implements IItemCtrl {
 
     public static $inject: string[] = ["flashCardQueue"];
 
-    // isChecked
+    public isChecked: boolean;
+    public challengeObject: IChallenge;
 
     constructor (private flashCardQueue: IFlashCardQueue) {
-        // code here
+        this.isChecked = false;
 
+        if (this.flashCardQueue.existsById(this.challengeObject.id)) {
+            this.isChecked = true;
+        }
     }
 
-    
+    public switchCheck(): void {
+        if (!this.isChecked) {
+            this.onUnCheck();
+        }
+        else {
+            this.onCheck();
+        }
+    }
+
+    public onCheck(): void {
+        this.flashCardQueue.addToQueue(this.challengeObject);
+        console.log("Added to Queue!");
+    }
+
+    public onUnCheck(): void {
+        this.flashCardQueue.removeById(this.challengeObject.id);
+        console.log("Removed from Queue!");
+    }
 
 }
 
@@ -34,8 +60,7 @@ function challengeListItem(): ng.IDirective {
         replace: true,
         restrict: "AE",
         scope: {
-            onCheck: "&",
-            onUnCheck: "&"
+            challengeObject: "="
         },
         template: require("./challengeListItem.html"),
     };

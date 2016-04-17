@@ -3,8 +3,14 @@
  */
 /// <reference path="../../typings/tsd.d.ts" />
 var Dashboard = (function () {
-    function Dashboard() {
+    function Dashboard($location) {
+        this.$location = $location;
+        console.log($location.path());
     }
+    Dashboard.prototype.goToChallenges = function () {
+        this.$location.replace();
+        this.$location.path("/");
+    };
     return Dashboard;
 }());
 function dashboard() {

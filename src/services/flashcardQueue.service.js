@@ -5,23 +5,16 @@ var FlashCardQueue = (function () {
     }
     /* tslint:disable:no-shadowed-variable no-use-before-declare */
     /**
+     * @description will accept either an array, a list of challenges as
+     * arguments.
      *
-     * @param {Array|Object} challenges
+     * @param {Array|Object} challenge
      */
-    FlashCardQueue.prototype.addToQueue = function (challenges) {
-        if (!challenges) {
+    FlashCardQueue.prototype.addToQueue = function (challenge) {
+        if (!challenge) {
             return;
         }
-        if (!Array.isArray(challenges)) {
-            var _challenges = [];
-            for (var i = 0; i < arguments.length; i += 1) {
-                _challenges[i] = arguments[i];
-            }
-            var challenges = _challenges;
-        }
-        while (challenges.length) {
-            this.queue.unshift(challenges.pop());
-        }
+        this.queue.unshift(challenge);
     };
     /* tslint:enable:no-shadowed-variable no-use-before-declare */
     FlashCardQueue.prototype.getFromQueue = function () {
@@ -47,7 +40,6 @@ var FlashCardQueue = (function () {
         this.queue = queueTemp; // replace the queue with our temporary queue
     }; // removeById
     FlashCardQueue.prototype.existsById = function (id) {
-        var exists = false;
         for (var i = 0; i < this.queue.length; i += 1) {
             if (this.queue[i].id === id) {
                 return true;
