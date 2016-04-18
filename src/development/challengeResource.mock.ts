@@ -47,11 +47,15 @@ angular
         challenges.push(challenge);
 
         challenge = {
-            answerString: "function(str) {\n\tvar i, arraylength, elementToCompare, " +
-            "winner = '', winnerLength = winner.length;" + "\n\tvar array = str.split(' ');" +
-            "\n\twhile(array.length > 0) {" + "\n\t\telementToCompare = array.pop();" +
-            "\n\t\tif (elementToCompare.length > winner.length) {" + "\n\t\t\twinner = elementToCompare;" +
-            "\n\t\t}" + "\n\t}" + "\n\nwinnerLength = winner.length;" + "\n\treturn winnerLength;" + "\n}",
+            answerString: "function(str) { \n\tvar elementToCompare, winner = ''; " +
+            "\n\tvar array = str.split(' '); " +
+            "\n\n\twhile(array.length > 0) {" +
+            "\n\t\telementToCompare = array.pop();" +
+            "\n\t\tif (elementToCompare.length > winner.length) {" +
+            "\n\t\t\twinner = elementToCompare; \n\t}" +
+            "\n\t}" +
+            "\nreturn winner;" +
+            "\n}",
             difficulty: 2,
             id: "3",
             language: 1,
@@ -59,11 +63,7 @@ angular
             tests: [{
                 description: "make sure it finds the loooooooonnngest word",
                 jasmineTest: "function() {\n\texpect(runThisFunction('The large planter fell off of the elevator').toEqual('elevator')\n}",
-                test: "runThisFunction('The large planter fell off of the elevator' === 'elevator'"
-                }, {
-                description: "make sure it finds the longest word, regardless of punctutation",
-                jasmineTest: "function() {\n\texpect(runThisFunction('elevator elevato.$#&').toEqual('elevator')\n}",
-                test: "runThisFunction('elevator elevato.$#&') === 'elevator'"
+                test: "runThisFunction('The large planter fell off of the elevator') === 'elevator'"
                 }]
         };
         challenges.push(challenge);

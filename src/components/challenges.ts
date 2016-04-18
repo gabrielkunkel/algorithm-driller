@@ -11,9 +11,11 @@ interface IChallengesCtrl {
 }
 
 interface ICodeMirrorOptions {
+    autofocus?: boolean;
     indentWithTabs: boolean;
     lineNumbers: boolean;
     readOnly?: boolean | string;
+    showCursorWhenSelecting?: boolean;
     tabSize: number;
 }
 
@@ -36,10 +38,11 @@ class Challenges implements IChallengesCtrl {
     public currentChallengeObject: IChallenge;
     public testArray: ITest[] = [];
 
-    // text box contents
+    // codemirror text box element settings and info
     public testBoxContents: string = "function() {\n\n\t\n\n}";
     public answerBoxContent: string = "// Answer will be put here.";
     public challengeName: string = "[Name of Challenge Here]";
+    public refreshAnswerBox: boolean = false;
 
     /**
      * Options available: https://codemirror.net/doc/manual.html
@@ -48,6 +51,7 @@ class Challenges implements IChallengesCtrl {
     public codeMirrorOptionsEdit: ICodeMirrorOptions = {
         indentWithTabs: true,
         lineNumbers: true,
+        showCursorWhenSelecting: true,
         tabSize: 2,
     };
 
@@ -56,6 +60,7 @@ class Challenges implements IChallengesCtrl {
      * @type {{indentWithTabs: boolean, lineNumbers: boolean, readOnly: string, tabSize: number}}
      */
     public codeMirrorOptionsDisplay: ICodeMirrorOptions  = {
+        autofocus: true,
         indentWithTabs: true,
         lineNumbers: true,
         readOnly: "nocursor",
@@ -66,7 +71,9 @@ class Challenges implements IChallengesCtrl {
     // public static $inject: string[] = ["$location", "flashCardQueue"];
 
     constructor (public flashCardQueue: IFlashCardQueue,
-                 public $location: ng.ILocationService
+                 public $location: ng.ILocationService,
+                 public $scope: ng.IRootScopeService,
+                 public $timeout: ng.ITimeoutService
     ) {
 
         console.log($location.path());
@@ -85,7 +92,6 @@ class Challenges implements IChallengesCtrl {
         // return all hide and show states to their default
         this.showAnswerButton = false;
         this.showGoToNextChallengeButton = false;
-        this.showAnswer = false;
         this.showCorrect = false;
         this.answerCorrect = false;
         this.hideCheckAnswerButton = false;
@@ -99,8 +105,11 @@ class Challenges implements IChallengesCtrl {
 
         // renew contents
         this.answerBoxContent = this.currentChallengeObject.answerString;
+        console.log(this.answerBoxContent);
         this.testBoxContents = "function() {\n\n\t\n\n}";
 
+        this.showAnswer = false;
+        this.refreshAnswerBox = false;
     }
 
     public onCheckAnswer(): void {
@@ -143,6 +152,16 @@ class Challenges implements IChallengesCtrl {
     
     public showAnswerMethod(): void {
         this.showAnswer = true;
+        this.updateAnswerBox();
+    }
+
+    public updateAnswerBox(): void {
+        this.refreshAnswerBox = true;
+
+    /*    this.$timeout(function (): void {
+            this.refreshAnswerBox = false;
+        }, 1);*/
+        
     }
 
 
