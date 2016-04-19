@@ -1,29 +1,20 @@
+/// <reference path="../typings/tsd.d.ts" />
+"use strict";
 /**
  * Created by gabrielkunkel on 1/28/16 in TypeScript.
  */
-/// <reference path="../typings/tsd.d.ts" />
-config.$inject = ["$locationProvider", "$logProvider", "$routeProvider"];
-function config($locationProvider, $logProvider, $routeProvider) {
-    // todo: fix the html 5 mode. This was causing routing problems
-    // $locationProvider.html5Mode({
-    //    enabled: true,
-    //    requireBase: false
-    // });
-    $logProvider.debugEnabled(true);
-    $routeProvider
-        .when("/", {
-        template: "<testbox></testbox>"
+// config.$inject: Array<string> = ["$stateProvider", "$urlRouterProvider"];
+function config($urlRouterProvider, $stateProvider) {
+    $urlRouterProvider.otherwise("/dashboard");
+    $stateProvider
+        .state("dashboard", {
+        template: "<dashboard></dashboard>",
+        url: "/dashboard"
     })
-        .when("/durian", {
-        template: "<durian-directive></durian-directive>"
-    })
-        .when("/dashboard", {
-        template: "<dashboard></dashboard>"
-    })
-        .when("/challenges", {
-        template: "<challenges></challenges>"
-    })
-        .otherwise("/dashboard");
+        .state("challenges", {
+        template: "<challenges></challenges>",
+        url: "/challenges"
+    });
 }
 angular
     .module("app")

@@ -1,37 +1,31 @@
+/// <reference path="../typings/tsd.d.ts" />
+
+import {IUrlRouterProvider} from "angular-ui-router";
+import {IStateProvider} from "angular-ui-router";
+
 /**
  * Created by gabrielkunkel on 1/28/16 in TypeScript.
  */
 
-/// <reference path="../typings/tsd.d.ts" />
+// config.$inject: Array<string> = ["$stateProvider", "$urlRouterProvider"];
 
-config.$inject = ["$locationProvider", "$logProvider", "$routeProvider"];
+function config($urlRouterProvider: IUrlRouterProvider, $stateProvider: IStateProvider): void {
 
-function config($locationProvider: ng.ILocationProvider,
-                $logProvider: ng.ILogProvider,
-                $routeProvider: ng.route.IRouteProvider): void {
+    $urlRouterProvider.otherwise("/dashboard");
 
-    // todo: fix the html 5 mode. This was causing routing problems
-    // $locationProvider.html5Mode({
-    //    enabled: true,
-    //    requireBase: false
-    // });
-    $logProvider.debugEnabled(true);
-    $routeProvider
-        .when("/", {
-            template: "<testbox></testbox>"
+    $stateProvider
+
+        .state("dashboard", {
+            template: "<dashboard></dashboard>",
+            url: "/dashboard",
         })
-        .when("/durian", {
-            template: "<durian-directive></durian-directive>"
-        })
-        .when("/dashboard", {
-            template: "<dashboard></dashboard>"
-        })
-        .when("/challenges", {
-            template: "<challenges></challenges>"
-        })
-        .otherwise("/dashboard");
 
+        .state("challenges", {
+            template: "<challenges></challenges>",
+            url: "/challenges"
+        })
 
+    ;
 }
 
 angular

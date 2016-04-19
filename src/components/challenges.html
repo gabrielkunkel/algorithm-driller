@@ -1,6 +1,7 @@
 <div>
   <h1>Challenges Component</h1>
-  {{ vm.challengeName }} =
+  Create an algorithm for {{ vm.challengeName }}.
+  runThisFunction =
   <textarea ui-codemirror="vm.codeMirrorOptionsEdit" ng-model="vm.testBoxContents" title="testbox"></textarea>
   <div ng-show="vm.showAnswer"><textarea id="answerBox" ui-codemirror="vm.codeMirrorOptionsDisplay" ui-refresh="vm.refreshAnswerBox" ng-model="vm.answerBoxContent" title="answerbox"></textarea></div>
   <div id="wrong" ng-show="vm.showWrong">Incorrect. You'll see this challenge again, soon.</div>

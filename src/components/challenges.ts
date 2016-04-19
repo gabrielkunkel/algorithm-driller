@@ -157,11 +157,6 @@ class Challenges implements IChallengesCtrl {
 
     public updateAnswerBox(): void {
         this.refreshAnswerBox = true;
-
-    /*    this.$timeout(function (): void {
-            this.refreshAnswerBox = false;
-        }, 1);*/
-        
     }
 
 
