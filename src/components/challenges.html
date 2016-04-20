@@ -1,12 +1,15 @@
 <div>
-  <h1>Challenges Component</h1>
-  Create an algorithm for {{ vm.challengeName }}.
+  <h1>Attack this challenge!</h1>
+  <p>Create an algorithm for {{ vm.challengeName }}.</p>
   runThisFunction =
   <textarea ui-codemirror="vm.codeMirrorOptionsEdit" ng-model="vm.testBoxContents" title="testbox"></textarea>
-  <div ng-show="vm.showAnswer"><textarea id="answerBox" ui-codemirror="vm.codeMirrorOptionsDisplay" ui-refresh="vm.refreshAnswerBox" ng-model="vm.answerBoxContent" title="answerbox"></textarea></div>
-  <div id="wrong" ng-show="vm.showWrong">Incorrect. You'll see this challenge again, soon.</div>
-  <div id="right" ng-show="vm.showCorrect">Correct. This flashcard will be removed.</div>
-  <button ng-show="vm.showAnswerButton" ng-click="vm.showAnswerMethod()">Show Answer</button>
-  <button ng-click="vm.onCheckAnswer()" ng-hide="vm.hideCheckAnswerButton">Check Answer</button>
-  <button ng-click="vm.nextChallenge()" ng-show="vm.showGoToNextChallengeButton">Go To Next Challenge</button>
+  <div ng-show="vm.showAnswer">
+    The correct answer is:
+    <textarea id="answerBox" ui-codemirror="vm.codeMirrorOptionsDisplay" ui-refresh="vm.refreshAnswerBox" ng-model="vm.answerBoxContent" title="answerbox"></textarea>
+  </div>
+  <div id="wrong" ng-show="vm.showWrong">Incorrect.</div>
+  <div id="right" ng-show="vm.showCorrect">Correct.</div>
+  <button type="button" class="btn btn-default" ng-show="vm.showAnswerButton" ng-click="vm.showAnswerMethod()">Show Answer</button>
+  <button type="button" class="btn btn-primary" ng-hide="vm.hideCheckAnswerButton" ng-click="vm.onCheckAnswer()">Check Answer</button>
+  <button type="button" class="btn btn-primary" ng-show="vm.showGoToNextChallengeButton" ng-click="vm.nextChallenge()">Go To Next Challenge</button>
 </div>

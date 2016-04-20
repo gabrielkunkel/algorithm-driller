@@ -12,8 +12,11 @@ import IAngularStatic = angular.IAngularStatic;
 require("./domain/");
 
 //////////// Require CSS /////////////////////////////////////
-require("./codemirror.css");
-require("./main.css");
+require("./styles/codemirror.css");
+require("./styles/main.css");
+require("../node_modules/bootstrap/dist/css/bootstrap.css");
+require("../node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.svg");
+require("./styles/bootstrap-cosmo.css");
 
 //////////// Require Libraries ///////////////////////////////
 var angular: IAngularStatic = require("angular");

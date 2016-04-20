@@ -31,6 +31,7 @@
     "angular-ui-router": "^0.2.18",
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
     "codemirror": "^5.11.0",
     "css-loader": "0.14.5",
     "eslint": "^1.10.2",
