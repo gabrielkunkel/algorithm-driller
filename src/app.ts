@@ -9,14 +9,14 @@ import IAngularStatic = angular.IAngularStatic;
 "use strict";
 
 ///////////// Non-Angular Libraries //////////////////////////
+require("../node_modules/bootstrap/dist/js/bootstrap.js");
 require("./domain/");
 
 //////////// Require CSS /////////////////////////////////////
 require("./styles/codemirror.css");
-require("./styles/main.css");
 require("../node_modules/bootstrap/dist/css/bootstrap.css");
-require("../node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.svg");
 require("./styles/bootstrap-cosmo.css");
+require("./styles/main.css");
 
 //////////// Require Libraries ///////////////////////////////
 var angular: IAngularStatic = require("angular");
