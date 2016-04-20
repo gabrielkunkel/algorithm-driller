@@ -9,4 +9,6 @@ require("./challengeList.js");
 require("./challengeListItem.js");
 require("./challenges.js");
 require("./home.js");
-require("./navbar");
+require("./navbar.js");
+require("./register");
+

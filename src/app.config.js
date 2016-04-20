@@ -18,6 +18,10 @@ function config($urlRouterProvider, $stateProvider, $locationProvider) {
         .state("home", {
         template: "<home></home>",
         url: "/"
+    })
+        .state("register", {
+        template: "<register></register>",
+        url: "/register"
     });
     $locationProvider.html5Mode(true);
 }

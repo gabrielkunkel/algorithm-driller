@@ -31,6 +31,11 @@ function config($urlRouterProvider: IUrlRouterProvider,
             template: "<home></home>",
             url: "/"
         })
+
+        .state("register", {
+            template: "<register></register>",
+            url: "/register"
+        })
     ;
 
     $locationProvider.html5Mode(true);

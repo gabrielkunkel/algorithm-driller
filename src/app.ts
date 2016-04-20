@@ -17,6 +17,7 @@ require("./styles/codemirror.css");
 require("../node_modules/bootstrap/dist/css/bootstrap.css");
 require("./styles/bootstrap-cosmo.css");
 require("./styles/main.css");
+require("./styles/forms.css");
 
 //////////// Require Libraries ///////////////////////////////
 var angular: IAngularStatic = require("angular");
