@@ -4,9 +4,8 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-require("./durian.js");
-require("./testbox.js");
 require("./dashboard.js");
 require("./challengeList.js");
 require("./challengeListItem.js");
 require("./challenges.js");
+require("./home.js");

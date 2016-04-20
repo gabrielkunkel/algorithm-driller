@@ -44,6 +44,10 @@ function getDevConfig() {
     context: here('src'), // adjust this to allow for tests in a different folder
     entry: './app.js',
 
+    devServer: {
+      historyApiFallback: true
+    },
+
     stats: {
       colors: true,
       reasons: true

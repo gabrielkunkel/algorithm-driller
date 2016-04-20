@@ -9,7 +9,9 @@ import {IStateProvider} from "angular-ui-router";
 
 // config.$inject: Array<string> = ["$stateProvider", "$urlRouterProvider"];
 
-function config($urlRouterProvider: IUrlRouterProvider, $stateProvider: IStateProvider): void {
+function config($urlRouterProvider: IUrlRouterProvider, 
+                $stateProvider: IStateProvider,
+                $locationProvider: ng.ILocationProvider): void {
 
     $urlRouterProvider.otherwise("/dashboard");
 
@@ -25,7 +27,13 @@ function config($urlRouterProvider: IUrlRouterProvider, $stateProvider: IStatePr
             url: "/challenges"
         })
 
+        .state("home", {
+            template: "<home></home>",
+            url: "/"
+        })
     ;
+
+    $locationProvider.html5Mode(true);
 }
 
 angular

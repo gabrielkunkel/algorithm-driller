@@ -13,6 +13,8 @@ class Dashboard implements IDashboardCtrl {
     constructor(public $location: ng.ILocationService) {
         console.log($location.path());
 
+        // if someone isn't logged in redirect them to the register page
+
     }
 
     public goToChallenges(): void {
