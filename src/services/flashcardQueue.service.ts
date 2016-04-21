@@ -3,9 +3,6 @@ import {IChallenge} from "../domain/challenge";
  * Created by gabrielkunkel on 2/15/16 in TypeScript.
  */
 
-
-
-
 export interface IFlashCardQueue {
     queue: IChallenge[];
     addToQueue(challenge: IChallenge): void;

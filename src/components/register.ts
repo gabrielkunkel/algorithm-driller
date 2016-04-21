@@ -10,6 +10,27 @@ interface IRegisterCtrl {
 
 class Register implements IRegisterCtrl {
 
+    constructor(public $http: ng.IHttpService,
+                public $location: ng.ILocationService) {
+        console.log($location.path());
+
+    }
+
+    public sendIt(): void {
+        console.log("submit run.");
+
+        var url: string = "/";
+        var user: any = {};
+
+        this.$http.post(url, user)
+            .then(function (res: any): void {
+                console.log("success http");
+            })
+            .catch(function (err: any): void {
+                console.log("fail http");
+            });
+    }
+
 } // end class
 
 function register(): ng.IDirective {
@@ -19,6 +40,7 @@ function register(): ng.IDirective {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
+        scope: {},
         template: require("./register.html"),
     };
 }

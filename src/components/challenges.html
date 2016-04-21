@@ -15,12 +15,14 @@
     </div>
 
     <!-- messages -->
-  <div id="wrong" ng-show="vm.showWrong">Incorrect.</div>
-  <div id="right" ng-show="vm.showCorrect">Correct.</div>
+    <div id="wrong" ng-show="vm.showWrong">Incorrect.</div>
+    <div id="right" ng-show="vm.showCorrect">Correct.</div>
 
     <!-- buttons -->
-  <button type="button" class="btn btn-default" ng-show="vm.showAnswerButton" ng-click="vm.showAnswerMethod()">Show Answer</button>
-  <button type="button" class="btn btn-primary" ng-hide="vm.hideCheckAnswerButton" ng-click="vm.onCheckAnswer()">Check Answer</button>
-  <button type="button" class="btn btn-primary" ng-show="vm.showGoToNextChallengeButton" ng-click="vm.nextChallenge()">Go To Next Challenge</button>
+    <button type="button" class="btn btn-default" ng-show="vm.showAnswerButton" ng-click="vm.showAnswerMethod()">Show Answer</button>
+    <button type="button" class="btn btn-primary" ng-hide="vm.hideCheckAnswerButton" ng-click="vm.onCheckAnswer()">Check Answer</button>
+    <button type="button" class="btn btn-primary" ng-show="vm.showGoToNextChallengeButton" ng-click="vm.nextChallenge()">Go To Next Challenge</button>
+
   </div>
+
 </div>

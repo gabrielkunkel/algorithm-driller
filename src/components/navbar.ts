@@ -19,6 +19,7 @@ function navbar(): ng.IDirective {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
+        scope: {},
         template: require("./navbar.html"),
     };
 }
