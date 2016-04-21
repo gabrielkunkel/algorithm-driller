@@ -11,4 +11,3 @@ require("./challenges.js");
 require("./home.js");
 require("./navbar.js");
 require("./register");
-

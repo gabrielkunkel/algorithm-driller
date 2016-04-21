@@ -25,6 +25,7 @@ require("../node_modules/angular-resource");
 require("../node_modules/angular-ui-codemirror/src/ui-codemirror.js");
 require("../node_modules/angular-sanitize");
 require("../node_modules/angular-ui-router/release/angular-ui-router.js");
+require("../node_modules/angular-messages");
 require("../node_modules/angular-mocks"); // todo: can this be moved to a conditional section(s)?
 
 //////////// Conditional Requires for Development /////////////
@@ -45,6 +46,7 @@ angular.module("app", [
     "ngResource",
     "ngSanitize",
     "ui.router",
+    "ngMessages",
     "appMock" // is it possible to add this module conditionally above? ...or make it conditional?
 ]);
 

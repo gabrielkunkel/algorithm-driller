@@ -24,6 +24,7 @@
   "//": "Comment Here",
   "devDependencies": {
     "angular": "^1.4.8",
+    "angular-messages": "^1.5.5",
     "angular-mocks": "^1.4.8",
     "angular-resource": "^1.4.9",
     "angular-sanitize": "^1.4.9",
