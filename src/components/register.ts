@@ -21,7 +21,7 @@ class Register implements IRegisterCtrl {
         console.log($location.path());
     }
 
-    public showAlert(alertType: string, alertTitle: string, alertMessage: string, alertTimeout: number): void {
+    public showAlert(alertType: string, alertTitle: string, alertMessage: string, alertTimeout?: number): void {
         this.alertShow = true;
         this.alertType = alertType;
         this.alertTitle = alertTitle;
@@ -30,17 +30,16 @@ class Register implements IRegisterCtrl {
     }
 
     public sendIt(): void {
-        var that: any = this;
-
+        
         var url: string = "/";
         var user: any = {};
 
         this.$http.post(url, user)
             .then((data: any) => {
-                that.showAlert("success", "Yes!", "You are registered.");
+                this.showAlert("success", "Yes!", "You are registered.");
             })
             .catch((err: any) => {
-                that.showAlert("warning", "Embarrassing...", "Problem on our end. Try again, later.");
+                this.showAlert("warning", "Embarrassing...", "Problem on our end. Try again, later.");
             });
     }
 
