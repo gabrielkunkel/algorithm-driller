@@ -10,24 +10,37 @@ interface IRegisterCtrl {
 
 class Register implements IRegisterCtrl {
 
+    public alertShow: boolean;
+    public alertType: string;
+    public alertMessage: string;
+    public alertTitle: string;
+    public alertTimeout: number;
+    
     constructor(public $http: ng.IHttpService,
                 public $location: ng.ILocationService) {
         console.log($location.path());
+    }
 
+    public showAlert(alertType: string, alertTitle: string, alertMessage: string, alertTimeout: number): void {
+        this.alertShow = true;
+        this.alertType = alertType;
+        this.alertTitle = alertTitle;
+        this.alertMessage = alertMessage;
+        this.alertTimeout = alertTimeout;
     }
 
     public sendIt(): void {
-        console.log("submit run.");
+        var that: any = this;
 
         var url: string = "/";
         var user: any = {};
 
         this.$http.post(url, user)
             .then(function (res: any): void {
-                console.log("success http");
+                that.showAlert("success", "Yes!", "You are registered.");
             })
             .catch(function (err: any): void {
-                console.log("fail http");
+                that.showAlert("warning", "Embarassing...", "Problem on our end. Try again, later.");
             });
     }
 
@@ -40,7 +53,6 @@ function register(): ng.IDirective {
         controllerAs: "vm",
         replace: true,
         restrict: "AE",
-        scope: {},
         template: require("./register.html"),
     };
 }

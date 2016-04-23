@@ -8,11 +8,8 @@
 require("../node_modules/bootstrap/dist/js/bootstrap.js");
 require("./domain/");
 //////////// Require CSS /////////////////////////////////////
-require("./styles/codemirror.css");
-require("../node_modules/bootstrap/dist/css/bootstrap.css");
-require("./styles/bootstrap-cosmo.css");
-require("./styles/main.css");
-require("./styles/forms.css");
+// require("../node_modules/bootstrap/dist/css/bootstrap.css");
+require("./styles");
 //////////// Require Libraries ///////////////////////////////
 var angular = require("angular");
 require("../node_modules/angular-resource");

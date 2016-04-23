@@ -9,4 +9,5 @@ require("./challenges.js");
 require("./home.js");
 require("./navbar.js");
 require("./register.js");
+require("./alertBox.js");
 //# sourceMappingURL=index.js.map
