@@ -36,11 +36,11 @@ class Register implements IRegisterCtrl {
         var user: any = {};
 
         this.$http.post(url, user)
-            .then(function (res: any): void {
+            .then((data: any) => {
                 that.showAlert("success", "Yes!", "You are registered.");
             })
-            .catch(function (err: any): void {
-                that.showAlert("warning", "Embarassing...", "Problem on our end. Try again, later.");
+            .catch((err: any) => {
+                that.showAlert("warning", "Embarrassing...", "Problem on our end. Try again, later.");
             });
     }
 
