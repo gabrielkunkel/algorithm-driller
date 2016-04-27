@@ -73,10 +73,10 @@ module.exports = function (app) {
   });
 
   /* Delete a Challenge */
-  app.delete('/cat/:id', function (req, res) {
+  app.delete('/challenge/:id', function (req, res) {
     Challenge.findByIdAndRemove(req.params.id, function (err) {
       if (err) {
-        res.json({ message: 'Error in attempting to delet challenge.', error: err });
+        res.json({ message: 'Error in attempting to delete challenge.', error: err });
       }
       else {
         res.json({ message: 'Challenge deleted.' });
