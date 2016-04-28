@@ -4,19 +4,19 @@
 
 /// <reference path="../../typings/tsd.d.ts" />
 
-export enum languages {
+export declare enum languages {
     Java,
     JavaScript,
     Ruby,
 }
 
-export interface ITest {
+export declare interface ITest {
     description: string;
     jasmineTest: string;
     test: string;
 }
 
-export interface IChallenge {
+export declare interface IChallenge {
     answerString: string;
     difficulty: number;
     id: string;

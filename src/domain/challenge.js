@@ -3,12 +3,6 @@
  */
 "use strict";
 /// <reference path="../../typings/tsd.d.ts" />
-(function (languages) {
-    languages[languages["Java"] = 0] = "Java";
-    languages[languages["JavaScript"] = 1] = "JavaScript";
-    languages[languages["Ruby"] = 2] = "Ruby";
-})(exports.languages || (exports.languages = {}));
-var languages = exports.languages;
 var Challenge = (function () {
     function Challenge(answerString, difficulty, id, language, name, tests) {
         this.answerString = answerString;

@@ -1,14 +1,27 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
+import {IStateService} from "angular-ui-router";
 /**
  * Created by gabrielkunkel on 4/19/16 in TypeScript.
  */
  
- /// <reference path="../../typings/tsd.d.ts" />
+
 
 interface INavbarCtrl {
         
 }
 
 class Navbar implements INavbarCtrl {
+
+    constructor(public $auth: any, 
+                public $state: IStateService) {
+
+    }
+
+    public logout(): void {
+        this.$state.go("home");
+        this.$auth.logout();
+    }
 
 } // end class
 

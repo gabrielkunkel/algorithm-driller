@@ -6,7 +6,7 @@
 
     <form name="register" ng-submit="vm.sendIt()" class="form-signin" novalidate>
 
-      <h1 class="form-signin-heading text-muted">Register</h1>
+      <h1 class="form-signin-heading text-muted">Sign-In</h1>
 
       <input name="email" placeholder="Email Address" type="email" class="form-control" maxlength="320"
              ng-model="vm.email"
@@ -35,7 +35,11 @@
       <p class="help-block" ng-show="register.password_confirm.$dirty && vm.password !== vm.password_confirm">Please make the passwords match.</p>
 
       <button ng-disabled="register.$invalid || vm.password !== vm.password_confirm" class="btn btn-lg btn-primary btn-block" type="submit">
-        Submit
+      Submit
+    </button>
+
+      <button ng-click="vm.authenticate('google')" class="btn btn-lg btn-primary btn-block" type="button">
+        Google
       </button>
 
     </form>

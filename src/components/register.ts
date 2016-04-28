@@ -17,8 +17,13 @@ class Register implements IRegisterCtrl {
     public alertTimeout: number;
     
     constructor(public $http: ng.IHttpService,
-                public $location: ng.ILocationService) {
+                public $location: ng.ILocationService, 
+                public $auth: any) {
         console.log($location.path());
+    }
+
+    public authenticate(provider: any): void {
+        this.$auth.authenticate(provider); // add then().catch() if we want.
     }
 
     public showAlert(alertType: string, alertTitle: string, alertMessage: string, alertTimeout?: number): void {
