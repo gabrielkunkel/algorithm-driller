@@ -13,9 +13,12 @@ interface INavbarCtrl {
 
 class Navbar implements INavbarCtrl {
 
+    public isAuthenticated: any;
+
     constructor(public $auth: any, 
                 public $state: IStateService) {
 
+        this.isAuthenticated = this.$auth.isAuthenticated;
     }
 
     public logout(): void {
