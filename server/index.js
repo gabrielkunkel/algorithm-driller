@@ -4,12 +4,14 @@
 
 var express = require('express');
 var app = express();
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var secrets = require('./secrets.js');
 
 
 /* Set-Up  */
+app.use(morgan('combined'));
 mongoose.connect(secrets.MONGO_URI);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

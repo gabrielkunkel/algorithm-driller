@@ -51,6 +51,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-webpack": "^1.7.0",
     "mongoose": "^4.3.7",
+    "morgan": "^1.7.0",
     "ng-annotate-loader": "0.0.10",
     "node-libs-browser": "0.5.2",
     "path-here": "1.1.0",
