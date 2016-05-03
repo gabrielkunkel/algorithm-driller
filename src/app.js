@@ -40,6 +40,7 @@ angular.module("app", [
     "appMock" // is it possible to add this module conditionally above? ...or make it conditional?
 ]);
 //////////// Require Application  /////////////////////////////
+require("./app.constants");
 require("./app.config.js");
 require("./services");
 require("./components");

@@ -23,4 +23,5 @@ coverage
 build/Release
 node_modules
 secrets.js
-privateconfig.js
+privateconfig.*
+app.constants.*

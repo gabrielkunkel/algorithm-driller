@@ -4,7 +4,7 @@
  * Created by gabrielkunkel on 1/28/16 in TypeScript.
  */
 // config.$inject: Array<string> = ["$stateProvider", "$urlRouterProvider"];
-function config($urlRouterProvider, $stateProvider, $locationProvider, $authProvider, API_URL) {
+function config($urlRouterProvider, $stateProvider, $locationProvider, $authProvider, API_URL, GOOGLE_CLIENT_ID) {
     $urlRouterProvider.otherwise("/dashboard");
     $stateProvider
         .state("dashboard", {
@@ -25,12 +25,11 @@ function config($urlRouterProvider, $stateProvider, $locationProvider, $authProv
     });
     $locationProvider.html5Mode(true);
     $authProvider.google({
-        clientId: "132605437656-3hn3c9558f0e8f81jbn1sojl8ik8gfob.apps.googleusercontent.com",
+        clientId: GOOGLE_CLIENT_ID,
         url: API_URL + "auth/google"
     });
 }
 angular
     .module("app")
-    .config(config)
-    .constant("API_URL", "http://localhost:3333/");
+    .config(config);
 //# sourceMappingURL=app.config.js.map

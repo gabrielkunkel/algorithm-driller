@@ -13,7 +13,8 @@ function config($urlRouterProvider: IUrlRouterProvider,
                 $stateProvider: IStateProvider,
                 $locationProvider: ng.ILocationProvider,
                 $authProvider: any,
-                API_URL: string): void {
+                API_URL: string, 
+                GOOGLE_CLIENT_ID: string): void {
 
     $urlRouterProvider.otherwise("/dashboard");
 
@@ -43,13 +44,13 @@ function config($urlRouterProvider: IUrlRouterProvider,
     $locationProvider.html5Mode(true);
 
     $authProvider.google({
-        clientId: "132605437656-3hn3c9558f0e8f81jbn1sojl8ik8gfob.apps.googleusercontent.com",
+        clientId: GOOGLE_CLIENT_ID,
         url: API_URL + "auth/google"
     });
 }
 
 angular
     .module("app")
-    .config(config)
-    .constant("API_URL", "http://localhost:3333/");
+    .config(config);
+
 

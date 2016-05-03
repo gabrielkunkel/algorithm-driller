@@ -50,6 +50,7 @@ angular.module("app", [
 ]);
 
 //////////// Require Application  /////////////////////////////
+require("./app.constants");
 require("./app.config.js");
 require("./services");
 require("./components");
