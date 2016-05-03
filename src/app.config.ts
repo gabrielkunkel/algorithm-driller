@@ -12,7 +12,8 @@ import {IStateProvider} from "angular-ui-router";
 function config($urlRouterProvider: IUrlRouterProvider, 
                 $stateProvider: IStateProvider,
                 $locationProvider: ng.ILocationProvider,
-                $authProvider: any): void {
+                $authProvider: any,
+                API_URL: string): void {
 
     $urlRouterProvider.otherwise("/dashboard");
 
@@ -43,11 +44,12 @@ function config($urlRouterProvider: IUrlRouterProvider,
 
     $authProvider.google({
         clientId: "132605437656-3hn3c9558f0e8f81jbn1sojl8ik8gfob.apps.googleusercontent.com",
-        //     url: API_URL + 'auth/google'
+        url: API_URL + "auth/google"
     });
 }
 
 angular
     .module("app")
-    .config(config);
+    .config(config)
+    .constant("API_URL", "http://localhost:3333/");
 

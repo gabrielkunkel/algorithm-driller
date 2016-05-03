@@ -61,5 +61,6 @@ function challengeResourceMock($httpBackend) {
     $httpBackend.whenGET("api/challenge").respond(200, challenges);
     // pass through requests for anything else
     $httpBackend.whenGET(/./).passThrough();
+    $httpBackend.whenPOST(/./).passThrough();
 }
 //# sourceMappingURL=challengeResource.mock.js.map

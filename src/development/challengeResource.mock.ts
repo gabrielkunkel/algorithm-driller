@@ -73,5 +73,7 @@ angular
 
         // pass through requests for anything else
         $httpBackend.whenGET(/./).passThrough();
+        
+        $httpBackend.whenPOST(/./).passThrough();
     }
 

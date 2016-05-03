@@ -18,6 +18,25 @@ var challengeSchema = mongoose.Schema({
   // description of the problem
   //
 
+  /* 
+   * 
+   * Additional Schema Fields
+   * ========================
+   * testChallengeDifficulty: 000-100
+   * challengeType: String
+   * description: String
+   * 
+   * add subdocument for tests
+   * =========================
+   * testDescription: String
+   * answerString: String
+   * testChallengeDifficulty: Number
+   * test: String
+   * usageExample: String
+   * testType: String (could be, "hideTests", "test", "speedDrill")
+   *
+   * */
+
 });
 
 module.exports = mongoose.model('Challenge', challengeSchema);
