@@ -1,8 +1,10 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
+import {IStateService} from "angular-ui-router";
 /**
  * Created by gabrielkunkel on 4/20/16 in TypeScript.
  */
- 
- /// <reference path="../../typings/tsd.d.ts" />
+
 
 interface IRegisterCtrl {
         
@@ -18,12 +20,15 @@ class Register implements IRegisterCtrl {
     
     constructor(public $http: ng.IHttpService,
                 public $location: ng.ILocationService, 
-                public $auth: any) {
+                public $auth: any, public $state: IStateService) {
         console.log($location.path());
     }
 
     public authenticate(provider: any): void {
-        this.$auth.authenticate(provider); // add then().catch() if we want.
+        this.$auth.authenticate(provider)
+            .then(() => {
+                this.$state.go("dashboard");
+            }); // add .catch() if we want.
     }
 
     public showAlert(alertType: string, alertTitle: string, alertMessage: string, alertTimeout?: number): void {

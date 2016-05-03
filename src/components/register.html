@@ -6,38 +6,6 @@
 
     <form name="register" ng-submit="vm.sendIt()" class="form-signin" novalidate>
 
-      <h1 class="form-signin-heading text-muted">Sign-In</h1>
-
-      <input name="email" placeholder="Email Address" type="email" class="form-control" maxlength="320"
-             ng-model="vm.email"
-             ng-minlength="7"
-             required>
-      <div ng-messages="register.email.$error" ng-if="register.email.$touched">
-        <p class="help-block" ng-message="required">An email address is required.</p>
-        <p class="help-block" ng-message="minlength">This email address is too short.</p>
-        <p class="help-block" ng-message="email">Please enter a valid email address.</p>
-      </div>
-
-
-      <input name="password" placeholder="Password" type="password" class="form-control" maxlength="115"
-             ng-model="vm.password"
-             ng-minlength="6"
-             required>
-      <div ng-messages="register.password.$error" ng-if="register.password.$touched">
-        <p class="help-block" ng-message="required">A password is required.</p>
-        <p class="help-block" ng-message="minlength">Too short. Try an <a href="http://lifehacker.com/5893510/using-common-phrases-makes-your-passphrase-password-useless-heres-how-to-pick-a-better-phrase">entropic phrase</a>.</p>
-      </div>
-
-
-      <input name="password_confirm" placeholder="Confirm Password" type="password" class="form-control" maxlength="115"
-             ng-model="vm.password_confirm"
-             required>
-      <p class="help-block" ng-show="register.password_confirm.$dirty && vm.password !== vm.password_confirm">Please make the passwords match.</p>
-
-      <button ng-disabled="register.$invalid || vm.password !== vm.password_confirm" class="btn btn-lg btn-primary btn-block" type="submit">
-      Submit
-    </button>
-
       <button ng-click="vm.authenticate('google')" class="btn btn-lg btn-primary btn-block" type="button">
         Google
       </button>
