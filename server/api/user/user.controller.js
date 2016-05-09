@@ -48,6 +48,7 @@ exports.update = function(req, res) {
 
 // Deletes a user from the DB.
 exports.destroy = function(req, res) {
+  
   User.findById(req.params.id, function (err, user) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.status(404).send('Not Found'); }

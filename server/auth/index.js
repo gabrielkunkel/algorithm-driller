@@ -110,7 +110,6 @@ function createJWT(user) {
    |--------------------------------------------------------------------------
    */
 
-  // todo: get email address from google
   router.post('/', function(req, res) {
     var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
     var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';

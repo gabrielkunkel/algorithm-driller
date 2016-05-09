@@ -53,6 +53,8 @@
     "karma-webpack": "^1.7.0",
     "moment": "^2.13.0",
     "mongoose": "^4.3.7",
+    "//": "NOTE: mongoose-seed must check for connection first. See their pull requests.",
+    "mongoose-seed": "^0.1.5",
     "morgan": "^1.7.0",
     "ng-annotate-loader": "0.0.10",
     "node-libs-browser": "0.5.2",

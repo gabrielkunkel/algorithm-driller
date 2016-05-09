@@ -8,13 +8,16 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var secrets = require('./secrets.js');
 var config = require('./privateconfig.js');
-
+var populateSeed = require('./seed.js');
 
 var app = express();
 
+/* Populate Seed */
+populateSeed();
+
 /* Set-Up  */
 app.use(morgan('combined'));
-mongoose.connect(secrets.MONGO_URI);
+mongoose.createConnection(secrets.MONGO_URI);
 mongoose.connection.on('error', function(err) {
   console.log('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
@@ -35,9 +38,8 @@ app.use(function (req, res, next) {
 
 
 /* Routes */
-// todo: switch challenge api to proper app.use and routes
-// var challenge = require("./api/challenge/")(app);
-// app.use('/api/user', require('./api/user'));
+app.use('/api/user', require('./api/user'));
+app.use('/api/challenge', require('./api/challenge'));
 app.use('/auth/google', require('./auth'));
 
 // app.use(express.static(path.join(__dirname, '../../client')));
