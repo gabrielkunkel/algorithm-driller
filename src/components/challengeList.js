@@ -5,8 +5,10 @@ var ChallengeList = (function () {
         this.challengeResourceService = challengeResourceService;
         this.challengeResource = challengeResourceService.getChallengeResource();
         this.challengeResource.query().$promise.then(function (data) {
-            var dataJsoned = angular.toJson(data);
-            _this.challengeCollection = angular.fromJson(dataJsoned);
+            console.log(data);
+            // var dataJsoned: string = angular.toJson(data);
+            // this.challengeCollection = angular.fromJson(dataJsoned);
+            _this.challengeCollection = data.data;
         });
     }
     ChallengeList.$inject = ["challengeResourceService"];

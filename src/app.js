@@ -37,7 +37,6 @@ angular.module("app", [
     "ui.router",
     "ngMessages",
     "satellizer",
-    "appMock" // is it possible to add this module conditionally above? ...or make it conditional?
 ]);
 //////////// Require Application  /////////////////////////////
 require("./app.constants");

@@ -15,16 +15,18 @@ export interface IChallengeResource extends ng.resource.IResource<Challenge> {
 
 export class ChallengeResourceService implements IChallengeResourceService {
 
-    public static $inject: string[] = ["$resource"];
+    public static $inject: string[] = ["$resource", "API_URL"];
 
-    constructor(private $resource: ng.resource.IResourceService) {
+    constructor(private $resource: ng.resource.IResourceService,
+                public API_URL: string) {
 
     }
 
     public getChallengeResource(): ng.resource.IResourceClass<IChallengeResource> {
-        return this.$resource("api/challenge/", {},
+        return this.$resource(this.API_URL + "api/challenge/", {},
             {
                 "update": {method: "PUT"},
+                "query": {method: "GET", isArray: false }
             }
         );
     }

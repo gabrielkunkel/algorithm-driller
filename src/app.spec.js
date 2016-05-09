@@ -4,7 +4,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 //////////// Require Production Program ///////////
 require("./app.js");
-// require("angular-mocks");
 //////////// Require Test Suites //////////////////
 require("./services/challengeResource.service.spec.js");
 require("./services/flashcardQueue.service.spec.js");

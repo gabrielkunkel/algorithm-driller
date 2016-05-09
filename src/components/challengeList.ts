@@ -13,16 +13,19 @@ interface IChallengeListCtrl {
 class ChallengeList implements IChallengeListCtrl {
  
     public challengeResource: ng.resource.IResourceClass<IChallengeResource>;
-    public challengeCollection: IChallenge[];
+    public challengeCollection: any;
 
     public static $inject: string[] = ["challengeResourceService"];
 
     constructor(private challengeResourceService: ChallengeResourceService) {
 
         this.challengeResource = challengeResourceService.getChallengeResource();
+
         this.challengeResource.query().$promise.then((data: any) => {
-            var dataJsoned: string = angular.toJson(data);
-            this.challengeCollection = angular.fromJson(dataJsoned);
+            console.log(data);
+            // var dataJsoned: string = angular.toJson(data);
+            // this.challengeCollection = angular.fromJson(dataJsoned);
+            this.challengeCollection = data.data;
         });
     }
 
