@@ -64,7 +64,8 @@ var data = [
         "displayName" : "Gabriel Kunkel",
         "picture" : "https://lh5.googleusercontent.com/-zBBB9SdsJKw/AAAAAAAAAAI/AAAAAAAAGv0/WbF3e8o6o4s/photo.jpg?sz=200",
         "google" : "109505991443194501441",
-        "role" : "admin"
+        "admin" : true,
+        "pro" : false,
       }
     ]
   }

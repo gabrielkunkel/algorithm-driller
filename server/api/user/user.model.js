@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
   email: String,
   displayName: String,
-  role: { type: String, default: 'free' }, // free, editor, pro, admin
+  admin: { type: Boolean, default: false },
+  pro: { type: Boolean, default: false },
   picture: String,
   google: String,
   github: String
@@ -20,6 +21,8 @@ module.exports = mongoose.model('User', userSchema);
 *
 * Additional Schema Fields
 * ========================
+* admin: Boolean
+* pro: Boolean
 * challengesMastered: (see challenges)
 * challenges: an array of objects that include:
 *     testLevel,

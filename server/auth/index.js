@@ -5,104 +5,16 @@
 var qs = require('querystring');
 
 var jwt = require('jwt-simple');
-var moment = require('moment');
 var request = require('request');
 var mongoose = require('mongoose');
-var express =require('express');
+var express = require('express');
 
 var secrets = require('../secrets.js');
 var User = require('../api/user/user.model.js');
+var middleware = require('./middleware');
 
 
 var router = express.Router();
-
-
-/*
- router.get('/', function(req, res) {
- res.send('GET handler for /dogs route.');
- );
-
- router.post('/', function(req, res) {
- res.send('POST handler for /dogs route.');
- });
-*/
-
-
-
-
-/*
- |--------------------------------------------------------------------------
- | Login Required Middleware
- |--------------------------------------------------------------------------
- */
-function ensureAuthenticated(req, res, next) {
-  if (!req.header('Authorization')) {
-    return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
-  }
-  var token = req.header('Authorization').split(' ')[1];
-
-  var payload = null;
-  try {
-    payload = jwt.decode(token, secrets.TOKEN_SECRET);
-  }
-  catch (err) {
-    return res.status(401).send({ message: err.message });
-  }
-
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).send({ message: 'Token has expired' });
-  }
-  req.user = payload.sub;
-  next();
-}
-
-
-/*
- |--------------------------------------------------------------------------
- | Generate JSON Web Token
- |--------------------------------------------------------------------------
- */
-function createJWT(user) {
-  var payload = {
-    sub: user._id,
-    iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
-  };
-  return jwt.encode(payload, secrets.TOKEN_SECRET);
-}
-
-
-  //
-  // /*
-  //  |--------------------------------------------------------------------------
-  //  | GET /api/me
-  //  |--------------------------------------------------------------------------
-  //  */
-  // router.get('/api/me', ensureAuthenticated, function(req, res) {
-  //   User.findById(req.user, function(err, user) {
-  //     res.send(user);
-  //   });
-  // });
-  //
-  // /*
-  //  |--------------------------------------------------------------------------
-  //  | PUT /api/me
-  //  |--------------------------------------------------------------------------
-  //  */
-  // router.put('/api/me', ensureAuthenticated, function(req, res) {
-  //   User.findById(req.user, function(err, user) {
-  //     if (!user) {
-  //       return res.status(400).send({ message: 'User not found' });
-  //     }
-  //     user.displayName = req.body.displayName || user.displayName;
-  //     user.email = req.body.email || user.email;
-  //     user.save(function(err) {
-  //       res.status(200).end();
-  //     });
-  //   });
-  // });
-
-
 
   /*
    |--------------------------------------------------------------------------
@@ -128,8 +40,6 @@ function createJWT(user) {
 
       // Step 2. Retrieve profile information about the current user.
       request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
-        
-        console.log(profile);
 
         if (profile.error) {
           return res.status(500).send({message: profile.error.message});
@@ -151,7 +61,7 @@ function createJWT(user) {
               user.displayName = user.displayName || profile.name;
               user.email = user.email || profile.email;
               user.save(function() {
-                var token = createJWT(user);
+                var token = middleware.createJWT(user);
                 res.send({ token: token });
               });
             });
@@ -160,7 +70,7 @@ function createJWT(user) {
           // Step 3b. Create a new user account or return an existing one.
           User.findOne({ google: profile.sub }, function(err, existingUser) {
             if (existingUser) {
-              return res.send({ token: createJWT(existingUser) });
+              return res.send({ token: middleware.createJWT(existingUser) });
             }
             var user = new User();
             user.google = profile.sub;
@@ -168,7 +78,7 @@ function createJWT(user) {
             user.displayName = profile.name;
             user.email = user.email || profile.email;
             user.save(function(err) {
-              var token = createJWT(user);
+              var token = middleware.createJWT(user);
               res.send({ token: token });
             });
           });
