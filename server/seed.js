@@ -16,7 +16,9 @@ var data = [
         answerString: "function(str) {\n\treturn str.split('').reverse().join('');\n}",
         difficulty: 1,
         language: 1,
-        name: "Reverse a String",
+        title: "Reverse a String",
+        description: "This is the description.",
+        example: "This is an example",
         tests: [{
           description: "make sure it reverses the string (e.g. 'start' will become 'trats)",
           jasmineTest: "function () {\n\tvar a = 'abcdef';\n\texpect(runThisFunction(a)).toEqual('fedcba');\n}",
@@ -28,7 +30,9 @@ var data = [
         "\n\treturn num * runThisFunction(num-1);\n}",
         difficulty: 1,
         language: 1,
-        name: "Factorial",
+        title: "Factorial",
+        description: "This is the description.",
+        example: "This is an example",
         tests: [{
           description: "it should return the factorial of the number",
           jasmineTest: "function () {\n\texpect(runThisFunction(5)).toBe(120);\n}",
@@ -47,7 +51,9 @@ var data = [
         "\n}",
         difficulty: 2,
         language: 1,
-        name: "Find the longest word in a string",
+        title: "Find the longest word in a string",
+        description: "This is the description.",
+        example: "This is an example",
         tests: [{
           description: "make sure it finds the loooooooonnngest word",
           jasmineTest: "function() {\n\texpect(runThisFunction('The large planter fell off of the elevator').toEqual('elevator')\n}",

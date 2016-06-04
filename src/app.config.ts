@@ -39,6 +39,11 @@ function config($urlRouterProvider: IUrlRouterProvider,
             template: "<register></register>",
             url: "/register"
         })
+
+        .state("newCard", {
+            template: "<new-card></new-card>",
+            url: "/card/new"
+        })
     ;
 
     $locationProvider.html5Mode(true);

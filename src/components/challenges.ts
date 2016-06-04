@@ -10,7 +10,7 @@ interface IChallengesCtrl {
         
 }
 
-interface ICodeMirrorOptions {
+declare export interface ICodeMirrorOptions {
     autofocus?: boolean;
     indentWithTabs: boolean;
     lineNumbers: boolean;
@@ -101,7 +101,7 @@ class Challenges implements IChallengesCtrl {
         // get the object we'll be working with
         this.currentChallengeObject = this.flashCardQueue.getFromQueue();
         this.testArray = this.currentChallengeObject.tests;
-        this.challengeName = this.currentChallengeObject.name;
+        this.challengeName = this.currentChallengeObject.title;
 
         // renew contents
         this.answerBoxContent = this.currentChallengeObject.answerString;

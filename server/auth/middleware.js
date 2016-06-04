@@ -7,40 +7,26 @@ var moment = require('moment');
 var secrets = require('../secrets');
 
 
-//
-// /*
-//  |--------------------------------------------------------------------------
-//  | GET /api/me
-//  |--------------------------------------------------------------------------
-//  */
-// router.get('/api/me', ensureAuthenticated, function(req, res) {
-//   User.findById(req.user, function(err, user) {
-//     res.send(user);
-//   });
-// });
-//
-// /*
-//  |--------------------------------------------------------------------------
-//  | PUT /api/me
-//  |--------------------------------------------------------------------------
-//  */
-// router.put('/api/me', ensureAuthenticated, function(req, res) {
-//   User.findById(req.user, function(err, user) {
-//     if (!user) {
-//       return res.status(400).send({ message: 'User not found' });
-//     }
-//     user.displayName = req.body.displayName || user.displayName;
-//     user.email = req.body.email || user.email;
-//     user.save(function(err) {
-//       res.status(200).end();
-//     });
-//   });
-// });
+/*
+ |--------------------------------------------------------------------------
+ | Generate JSON Web Token
+ |--------------------------------------------------------------------------
+ */
+exports.createJWT = function(user) {
+  var payload = {
+    sub: user._id,
+    iat: moment().unix(),
+    exp: moment().add(14, 'days').unix(),
+    admin: user.admin,
+    pro: user.pro
+  };
+  return jwt.encode(payload, secrets.TOKEN_SECRET);
+};
 
 
 /*
  |--------------------------------------------------------------------------
- | Ensure Authenticated Middleware
+ | Ensure Authenticated Per User Type Middleware
  |--------------------------------------------------------------------------
  */
 exports.ensureAuthenticated = function(req, res, next) {
@@ -64,11 +50,6 @@ exports.ensureAuthenticated = function(req, res, next) {
   next();
 };
 
-/*
- |--------------------------------------------------------------------------
- | Ensure Appropriate Access
- |--------------------------------------------------------------------------
- */
 exports.ensureAuthenticatedAdmin = function (req, res, next) {
 
   if (!req.header('Authorization')) {
@@ -125,22 +106,4 @@ exports.ensureAuthenticatedPro = function (req, res, next) {
 
   next();
 
-};
-
-
-
-/*
- |--------------------------------------------------------------------------
- | Generate JSON Web Token
- |--------------------------------------------------------------------------
- */
-exports.createJWT = function(user) {
-  var payload = {
-    sub: user._id,
-    iat: moment().unix(),
-    exp: moment().add(14, 'days').unix(),
-    admin: user.admin,
-    pro: user.pro
-  };
-  return jwt.encode(payload, secrets.TOKEN_SECRET);
 };

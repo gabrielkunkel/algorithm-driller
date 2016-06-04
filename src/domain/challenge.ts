@@ -21,7 +21,9 @@ export declare interface IChallenge {
     difficulty: number;
     id: string;
     language: languages;
-    name: string;
+    title: string;
+    description: string;
+    example: string;
     tests: ITest[];
 }
 
@@ -31,7 +33,9 @@ export class Challenge implements IChallenge {
                 public difficulty: number,
                 public id: string,
                 public language: languages,
-                public name: string,
+                public title: string,
+                public description: string,
+                public example: string,
                 public tests: ITest[]) {
 
     }

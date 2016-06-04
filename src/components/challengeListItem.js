@@ -2,10 +2,7 @@
 var ChallengeListItem = (function () {
     function ChallengeListItem(flashCardQueue) {
         this.flashCardQueue = flashCardQueue;
-        this.isChecked = false;
-        if (this.flashCardQueue.existsById(this.challengeObject.id)) {
-            this.isChecked = true;
-        }
+        this.isChecked = this.flashCardQueue.existsById(this.challengeObject.id);
     }
     ChallengeListItem.prototype.switchCheck = function () {
         if (!this.isChecked) {

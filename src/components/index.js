@@ -10,4 +10,6 @@ require("./home.js");
 require("./navbar.js");
 require("./register.js");
 require("./alertBox.js");
+require("./newCard");
+require("./cardForm");
 //# sourceMappingURL=index.js.map

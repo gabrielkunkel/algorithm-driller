@@ -6,7 +6,7 @@ var Dashboard = (function () {
     function Dashboard($location) {
         this.$location = $location;
         console.log($location.path());
-        // if someone isn't logged in redirect them to the register page
+        // todo: if someone isn't logged in redirect them to the register page
     }
     Dashboard.prototype.goToChallenges = function () {
         this.$location.replace();

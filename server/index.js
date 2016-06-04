@@ -41,7 +41,9 @@ app.use(function (req, res, next) {
 app.use('/api/user', require('./api/user'));
 app.use('/api/challenge', require('./api/challenge'));
 app.use('/auth/google', require('./auth'));
+app.use('/api/me', require('./api/me'));
 
+// the following is where the primary website page files will be served from
 // app.use(express.static(path.join(__dirname, '../../client')));
 
 

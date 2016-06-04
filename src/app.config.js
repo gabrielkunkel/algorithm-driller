@@ -22,6 +22,10 @@ function config($urlRouterProvider, $stateProvider, $locationProvider, $authProv
         .state("register", {
         template: "<register></register>",
         url: "/register"
+    })
+        .state("newCard", {
+        template: "<new-card></new-card>",
+        url: "/card/new"
     });
     $locationProvider.html5Mode(true);
     $authProvider.google({

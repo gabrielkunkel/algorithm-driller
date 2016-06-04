@@ -3,7 +3,6 @@
  */
 
 var express = require('express');
-var _ = require('lodash');
 var controller = require('./challenge.controller');
 var mw = require('../../auth/middleware');
 
@@ -11,8 +10,8 @@ var router = express.Router();
 
   router.get('/', mw.ensureAuthenticated, controller.index);
   router.get('/:id', mw.ensureAuthenticated, controller.show);
-  router.post('/', mw.ensureAuthenticatedPro, controller.create);
-  router.put('/:id', mw.ensureAuthenticatedPro, controller.update);
-  router.delete('/:id', mw.ensureAuthenticatedPro, controller.destroy);
+  router.post('/', mw.ensureAuthenticatedAdmin, controller.create);
+  router.put('/:id', mw.ensureAuthenticatedAdmin, controller.update);
+  router.delete('/:id', mw.ensureAuthenticatedAdmin, controller.destroy);
 
-module.exports = router; // todo: add this to a separate routes file
+module.exports = router;

@@ -6,11 +6,13 @@ var mongoose = require('mongoose');
 
 var challengeSchema = mongoose.Schema({
 
+  title: String,
+  description: String,
+  example: String,
   answerString: String,
-  difficulty: Number,
-  language: String,
-  name: String,
-  tests: Array
+  tests: Array,
+  difficulty: { type: Number, default: 5 },
+  language: { type: Number, default: 1 }
 
   // times gotten incorrect per user session: array
   // jasmine tests in tests

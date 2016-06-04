@@ -24,11 +24,9 @@ class ChallengeListItem implements IItemCtrl {
     public challengeObject: IChallenge;
 
     constructor (private flashCardQueue: IFlashCardQueue) {
-        this.isChecked = false;
 
-        if (this.flashCardQueue.existsById(this.challengeObject.id)) {
-            this.isChecked = true;
-        }
+
+        this.isChecked = this.flashCardQueue.existsById(this.challengeObject.id);
     }
 
     public switchCheck(): void {
