@@ -22,9 +22,6 @@ class ChallengeList implements IChallengeListCtrl {
         this.challengeResource = challengeResourceService.getChallengeResource();
 
         this.challengeResource.query().$promise.then((data: any) => {
-            console.log(data);
-            // var dataJsoned: string = angular.toJson(data);
-            // this.challengeCollection = angular.fromJson(dataJsoned);
             this.challengeCollection = data.data;
         });
     }

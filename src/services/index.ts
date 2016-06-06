@@ -6,3 +6,4 @@
 
 require("./challengeResource.service.js");
 require("./flashcardQueue.service.js");
+require("./meResource.service");

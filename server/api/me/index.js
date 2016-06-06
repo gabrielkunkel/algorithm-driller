@@ -16,6 +16,8 @@ var router = express.Router();
 router.get('/', mw.ensureAuthenticated, function(req, res) {
   User.findById(req.user, function(err, user) {
     res.send(user);
+    console.log("The retrieved user is: " + req.user);
+    console.log(req.user);
   });
 });
 

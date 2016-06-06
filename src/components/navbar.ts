@@ -14,16 +14,36 @@ interface INavbarCtrl {
 class Navbar implements INavbarCtrl {
 
     public isAuthenticated: any;
+    public meRes: any;
+    public user: any;
 
     constructor(public $auth: any, 
-                public $state: IStateService) {
+                public $state: IStateService,
+                private meResource: any) {
 
         this.isAuthenticated = this.$auth.isAuthenticated;
+
+        this.meRes = meResource.getMeResource();
+        
+        this.meRes.query().$promise.then((data: any) => {
+            this.user = data;
+        });
     }
 
     public logout(): void {
-        this.$state.go("home");
         this.$auth.logout();
+        this.$state.go("home");
+    }
+
+    public isAdmin(): boolean {
+        if (this.user) {
+            console.log(this.user.admin);
+            return this.user.admin;
+        }
+        else {
+            return false;
+        }
+
     }
 
 } // end class

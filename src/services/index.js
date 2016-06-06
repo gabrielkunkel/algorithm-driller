@@ -4,4 +4,5 @@
 /// <reference path="../../typings/tsd.d.ts" />
 require("./challengeResource.service.js");
 require("./flashcardQueue.service.js");
+require("./meResource.service");
 //# sourceMappingURL=index.js.map
